@@ -1,0 +1,1433 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Harmoni Budaya Kaili 2026 — Merayakan Budaya, Menjaga Lingkungan</title>
+    <meta name="description"
+        content="Event Harmoni Budaya Kaili 2026 — Perayaan budaya Kaili yang menggabungkan seni, tradisi, dan kesadaran lingkungan hidup di Sulawesi Tengah.">
+    <meta name="keywords"
+        content="Harmoni Budaya Kaili, Event Budaya, Sulawesi Tengah, Lingkungan Hidup, Festival Budaya">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'forest': {
+                            50: '#f0fdf4',
+                            100: '#dcfce7',
+                            200: '#bbf7d0',
+                            300: '#86efac',
+                            400: '#4ade80',
+                            500: '#22c55e',
+                            600: '#16a34a',
+                            700: '#15803d',
+                            800: '#166534',
+                            900: '#14532d',
+                            950: '#052e16',
+                        },
+                        'earth': {
+                            100: '#fef3c7',
+                            200: '#fde68a',
+                            300: '#fcd34d',
+                            400: '#d4a373',
+                            500: '#b08050',
+                        },
+                        'leaf': '#52B788',
+                        'moss': '#2D6A4F',
+                        'bark': '#6B4423',
+                    },
+                    fontFamily: {
+                        'heading': ['Playfair Display', 'serif'],
+                        'body': ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'float-delay': 'float 6s ease-in-out 2s infinite',
+                        'fade-up': 'fadeUp 0.8s ease-out forwards',
+                        'fade-in': 'fadeIn 1s ease-out forwards',
+                        'slide-left': 'slideLeft 0.8s ease-out forwards',
+                        'slide-right': 'slideRight 0.8s ease-out forwards',
+                        'pulse-soft': 'pulseSoft 3s ease-in-out infinite',
+                        'leaf-fall': 'leafFall 10s linear infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        },
+                        fadeUp: {
+                            '0%': { opacity: '0', transform: 'translateY(40px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        slideLeft: {
+                            '0%': { opacity: '0', transform: 'translateX(60px)' },
+                            '100%': { opacity: '1', transform: 'translateX(0)' },
+                        },
+                        slideRight: {
+                            '0%': { opacity: '0', transform: 'translateX(-60px)' },
+                            '100%': { opacity: '1', transform: 'translateX(0)' },
+                        },
+                        pulseSoft: {
+                            '0%, 100%': { opacity: '0.4' },
+                            '50%': { opacity: '0.8' },
+                        },
+                        leafFall: {
+                            '0%': { transform: 'translateY(-10%) rotate(0deg)', opacity: '1' },
+                            '100%': { transform: 'translateY(110vh) rotate(720deg)', opacity: '0' },
+                        },
+                    },
+                },
+            },
+        }
+    </script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body class="font-body bg-white text-gray-800 overflow-x-hidden">
+
+    <!-- =========================================
+         FLOATING LEAF PARTICLES (Background Decoration)
+    ========================================= -->
+    <div id="leaf-particles" class="fixed inset-0 pointer-events-none z-0 overflow-hidden"></div>
+
+    <!-- =========================================
+         NAVIGATION BAR
+    ========================================= -->
+    <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-in-out">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Logo -->
+                <a href="#beranda" class="flex items-center gap-2 sm:gap-3 group shrink-0">
+                    <img src="assets/images/logo-harmoni.png" alt="Logo Harmoni Budaya Kaili" class="h-9 sm:h-10 md:h-12 w-auto object-contain group-hover:scale-105 transition-all duration-300">
+                    <div class="w-px h-6 sm:h-8 md:h-10 bg-gray-300/40"></div>
+                    <img src="assets/images/logo-yayasan.png" alt="Logo Yayasan Bulava Nusantara Permai" class="h-9 sm:h-10 md:h-12 w-auto object-contain group-hover:scale-105 transition-all duration-300">
+                </a>
+
+                <!-- Desktop Menu -->
+                <div class="hidden lg:flex items-center gap-1">
+                    <a href="#beranda"
+                        class="nav-link px-4 py-2 rounded-lg text-sm font-semibold transition-all duration-300 hover:bg-leaf/10 hover:text-moss"
+                        data-lang-id="Beranda" data-lang-en="Home">Beranda</a>
+                    <a href="#tentang"
+                        class="nav-link px-4 py-2 rounded-lg text-sm font-semibold transition-all duration-300 hover:bg-leaf/10 hover:text-moss"
+                        data-lang-id="Tentang" data-lang-en="About">Tentang</a>
+                    <a href="#yayasan"
+                        class="nav-link px-4 py-2 rounded-lg text-sm font-semibold transition-all duration-300 hover:bg-leaf/10 hover:text-moss"
+                        data-lang-id="Yayasan" data-lang-en="Foundation">Yayasan</a>
+                    <a href="#pendaftaran"
+                        class="nav-link px-4 py-2 rounded-lg text-sm font-semibold transition-all duration-300 hover:bg-leaf/10 hover:text-moss"
+                        data-lang-id="Pendaftaran" data-lang-en="Register">Pendaftaran</a>
+                    <a href="#kemitraan"
+                        class="nav-link px-4 py-2 rounded-lg text-sm font-semibold transition-all duration-300 hover:bg-leaf/10 hover:text-moss"
+                        data-lang-id="Kemitraan" data-lang-en="Partnership">Kemitraan</a>
+
+                    <!-- Search Icon -->
+                    <button id="search-btn"
+                        class="ml-2 p-2 rounded-lg nav-text-color hover:bg-leaf/10 transition-all duration-300">
+                        <i data-lucide="search" class="w-5 h-5"></i>
+                    </button>
+
+                    <!-- Language Toggle ID / EN -->
+                    <div id="lang-switch" class="flex items-center gap-1 ml-3">
+                        <button
+                            class="lang-btn active-lang w-9 h-9 rounded-full flex items-center justify-center text-xs font-bold transition-all duration-300"
+                            data-lang="id">ID</button>
+                        <button
+                            class="lang-btn w-9 h-9 rounded-full flex items-center justify-center text-xs font-bold transition-all duration-300"
+                            data-lang="en">EN</button>
+                    </div>
+                </div>
+
+                <!-- Mobile Language + Menu -->
+                <div class="lg:hidden flex items-center gap-2">
+                    <!-- Mobile Language Toggle -->
+                    <div class="flex items-center gap-0.5">
+                        <button
+                            class="lang-btn-mobile active-lang-mobile w-8 h-8 rounded-full flex items-center justify-center text-[10px] font-bold transition-all duration-300"
+                            data-lang="id">ID</button>
+                        <button
+                            class="lang-btn-mobile w-8 h-8 rounded-full flex items-center justify-center text-[10px] font-bold transition-all duration-300"
+                            data-lang="en">EN</button>
+                    </div>
+                    <button id="mobile-menu-btn" class="p-2 rounded-lg hover:bg-leaf/10 transition-all">
+                        <i data-lucide="menu" class="w-6 h-6 nav-text-color"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="lg:hidden hidden bg-white/95 backdrop-blur-xl border-t border-gray-100 shadow-2xl">
+            <div class="px-6 py-4 space-y-1">
+                <a href="#beranda"
+                    class="mobile-nav-link block px-4 py-3 rounded-xl text-gray-700 font-semibold hover:bg-forest-50 hover:text-moss transition-all">Beranda</a>
+                <a href="#tentang"
+                    class="mobile-nav-link block px-4 py-3 rounded-xl text-gray-700 font-semibold hover:bg-forest-50 hover:text-moss transition-all">Tentang
+                    Event</a>
+                <a href="#yayasan"
+                    class="mobile-nav-link block px-4 py-3 rounded-xl text-gray-700 font-semibold hover:bg-forest-50 hover:text-moss transition-all">Yayasan</a>
+                <a href="#pendaftaran"
+                    class="mobile-nav-link block px-4 py-3 rounded-xl text-gray-700 font-semibold hover:bg-forest-50 hover:text-moss transition-all">Pendaftaran</a>
+                <a href="#kemitraan"
+                    class="mobile-nav-link block px-4 py-3 rounded-xl text-gray-700 font-semibold hover:bg-forest-50 hover:text-moss transition-all">Kemitraan</a>
+                <a href="#pendaftaran"
+                    class="block mt-3 px-6 py-3 bg-gradient-to-r from-leaf to-moss text-white text-center font-bold rounded-xl shadow-lg">Daftar
+                    Sekarang</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- =========================================
+         SECTION 1: HERO BANNER SLIDER
+    ========================================= -->
+    <section id="beranda" class="relative w-full h-[100svh] min-h-[550px] md:h-[500px] md:min-h-0 lg:h-screen lg:min-h-[700px] overflow-hidden bg-forest-950">
+        <!-- Slider Container -->
+        <div id="hero-slider" class="relative w-full h-full">
+            <!-- Slide 1 -->
+            <div class="hero-slide absolute inset-0 opacity-0 transition-opacity duration-1000" data-slide="0">
+                <img src="assets/images/banner1.jpeg" alt="Tarian Tradisional Kaili" class="w-full h-full object-cover object-center">
+                <div class="absolute inset-0 bg-gradient-to-r from-forest-950/80 via-forest-900/50 to-transparent">
+                </div>
+                <div class="absolute inset-0 flex items-center">
+                    <div class="max-w-7xl mx-auto px-6 lg:px-8 w-full">
+                        <div class="max-w-2xl">
+                            <span
+                                class="inline-flex items-center gap-2 px-4 py-2 bg-leaf/20 backdrop-blur-sm border border-leaf/30 rounded-full text-leaf text-sm font-semibold mb-6">
+                                <i data-lucide="calendar" class="w-4 h-4"></i>
+                                <span data-t="hero1_badge">5 Juni 2026 — Hari Lingkungan Hidup Sedunia</span>
+                            </span>
+                            <h2 class="text-4xl md:text-6xl lg:text-7xl font-heading font-bold text-white leading-tight mb-6"
+                                data-t="hero1_title">
+                                Harmoni<br>
+                                <span
+                                    class="text-transparent bg-clip-text bg-gradient-to-r from-green-300 to-emerald-400">Budaya
+                                    Kaili</span>
+                            </h2>
+                            <p class="text-lg text-gray-200 leading-relaxed mb-8 max-w-xl" data-t="hero1_desc">Merayakan
+                                keindahan budaya Kaili yang hidup berdampingan selaras dengan alam, dalam semangat
+                                melestarikan lingkungan hidup.</p>
+                            <div class="flex flex-wrap gap-4">
+                                <a href="#pendaftaran"
+                                    class="group px-8 py-4 bg-gradient-to-r from-leaf to-moss text-white font-bold rounded-full shadow-2xl shadow-leaf/30 hover:shadow-leaf/50 hover:scale-105 transition-all duration-300 flex items-center gap-2">
+                                    <span data-t="hero1_cta1">Daftar Sekarang</span>
+                                    <i data-lucide="arrow-right"
+                                        class="w-5 h-5 group-hover:translate-x-1 transition-transform"></i>
+                                </a>
+                                <a href="#tentang"
+                                    class="px-8 py-4 bg-white/10 backdrop-blur-sm border border-white/30 text-white font-bold rounded-full hover:bg-white/20 transition-all duration-300"
+                                    data-t="hero1_cta2">
+                                    Pelajari Lebih Lanjut
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 2 -->
+            <div class="hero-slide absolute inset-0 opacity-0 transition-opacity duration-1000" data-slide="1">
+                <img src="assets/images/banner2.jpg" alt="Keindahan Alam Sulawesi" class="w-full h-full object-cover object-center">
+                <div class="absolute inset-0 bg-gradient-to-r from-forest-950/80 via-forest-900/50 to-transparent">
+                </div>
+                <div class="absolute inset-0 flex items-center">
+                    <div class="max-w-7xl mx-auto px-6 lg:px-8 w-full">
+                        <div class="max-w-2xl">
+                            <span
+                                class="inline-flex items-center gap-2 px-4 py-2 bg-emerald-500/20 backdrop-blur-sm border border-emerald-400/30 rounded-full text-emerald-300 text-sm font-semibold mb-6">
+                                <i data-lucide="trees" class="w-4 h-4"></i>
+                                <span data-t="hero2_badge">Lahir dari Alam, Tumbuh Bersama Budaya</span>
+                            </span>
+                            <h2 class="text-4xl md:text-6xl lg:text-7xl font-heading font-bold text-white leading-tight mb-6"
+                                data-t="hero2_title">
+                                Menjaga Alam,<br>
+                                <span
+                                    class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-300 to-green-400">Merawat
+                                    Warisan</span>
+                            </h2>
+                            <p class="text-lg text-gray-200 leading-relaxed mb-8 max-w-xl" data-t="hero2_desc">Bersama
+                                kita lestarikan kekayaan budaya Kaili dan keindahan alam Sulawesi Tengah untuk generasi
+                                mendatang.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 3 -->
+            <div class="hero-slide absolute inset-0 opacity-0 transition-opacity duration-1000" data-slide="2">
+                <img src="assets/images/banner3.png" alt="Kerajinan Tradisional Kaili"
+                    class="w-full h-full object-cover object-center">
+                <div class="absolute inset-0 bg-gradient-to-r from-forest-950/80 via-forest-900/50 to-transparent">
+                </div>
+                <div class="absolute inset-0 flex items-center">
+                    <div class="max-w-7xl mx-auto px-6 lg:px-8 w-full">
+                        <div class="max-w-2xl">
+                            <span
+                                class="inline-flex items-center gap-2 px-4 py-2 bg-amber-500/20 backdrop-blur-sm border border-amber-400/30 rounded-full text-amber-300 text-sm font-semibold mb-6">
+                                <i data-lucide="palette" class="w-4 h-4"></i>
+                                <span data-t="hero3_badge">Seni & Kerajinan Tradisional</span>
+                            </span>
+                            <h2 class="text-4xl md:text-6xl lg:text-7xl font-heading font-bold text-white leading-tight mb-6"
+                                data-t="hero3_title">
+                                Warisan<br>
+                                <span
+                                    class="text-transparent bg-clip-text bg-gradient-to-r from-amber-300 to-yellow-400">Tak
+                                    Ternilai</span>
+                            </h2>
+                            <p class="text-lg text-gray-200 leading-relaxed mb-8 max-w-xl" data-t="hero3_desc">Kulit
+                                kayu, tenun, dan ragam kerajinan tangan Kaili — karya seni yang lahir dari kearifan
+                                lokal dan material alam.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 4 -->
+            <div class="hero-slide absolute inset-0 opacity-0 transition-opacity duration-1000" data-slide="3">
+                <img src="assets/images/banner4.png" alt="Aksi Lingkungan Hidup" class="w-full h-full object-cover object-center">
+                <div class="absolute inset-0 bg-gradient-to-r from-forest-950/80 via-forest-900/50 to-transparent">
+                </div>
+                <div class="absolute inset-0 flex items-center">
+                    <div class="max-w-7xl mx-auto px-6 lg:px-8 w-full">
+                        <div class="max-w-2xl">
+                            <span
+                                class="inline-flex items-center gap-2 px-4 py-2 bg-green-500/20 backdrop-blur-sm border border-green-400/30 rounded-full text-green-300 text-sm font-semibold mb-6">
+                                <i data-lucide="sprout" class="w-4 h-4"></i>
+                                <span data-t="hero4_badge">Aksi Nyata untuk Bumi</span>
+                            </span>
+                            <h2 class="text-4xl md:text-6xl lg:text-7xl font-heading font-bold text-white leading-tight mb-6"
+                                data-t="hero4_title">
+                                Bersama<br>
+                                <span
+                                    class="text-transparent bg-clip-text bg-gradient-to-r from-green-300 to-teal-400">Hijau
+                                    Kembali</span>
+                            </h2>
+                            <p class="text-lg text-gray-200 leading-relaxed mb-8 max-w-xl" data-t="hero4_desc">Gerakan
+                                penanaman pohon dan pelestarian lingkungan — menyatukan komunitas untuk masa depan yang
+                                lebih hijau.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 5 -->
+            <div class="hero-slide absolute inset-0 opacity-0 transition-opacity duration-1000" data-slide="4">
+                <img src="assets/images/banner5.JPG" alt="Pertunjukan Musik Kaili" class="w-full h-full object-cover object-center">
+                <div class="absolute inset-0 bg-gradient-to-r from-forest-950/80 via-forest-900/50 to-transparent">
+                </div>
+                <div class="absolute inset-0 flex items-center">
+                    <div class="max-w-7xl mx-auto px-6 lg:px-8 w-full">
+                        <div class="max-w-2xl">
+                            <span
+                                class="inline-flex items-center gap-2 px-4 py-2 bg-purple-500/20 backdrop-blur-sm border border-purple-400/30 rounded-full text-purple-300 text-sm font-semibold mb-6">
+                                <i data-lucide="music" class="w-4 h-4"></i>
+                                <span data-t="hero5_badge">Panggung Seni & Musik</span>
+                            </span>
+                            <h2 class="text-4xl md:text-6xl lg:text-7xl font-heading font-bold text-white leading-tight mb-6"
+                                data-t="hero5_title">
+                                Dentingan<br>
+                                <span
+                                    class="text-transparent bg-clip-text bg-gradient-to-r from-purple-300 to-pink-400">Nada
+                                    Tradisi</span>
+                            </h2>
+                            <p class="text-lg text-gray-200 leading-relaxed mb-8 max-w-xl" data-t="hero5_desc">Lalove,
+                                gimba, dan alunan musik tradisional Kaili bergema di panggung, menghidupkan semangat
+                                warisan para leluhur.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slider Controls -->
+        <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex items-center gap-4">
+            <button id="slider-prev"
+                class="w-12 h-12 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center text-white hover:bg-white/30 transition-all duration-300 hover:scale-110">
+                <i data-lucide="chevron-left" class="w-5 h-5"></i>
+            </button>
+            <div id="slider-dots" class="flex gap-2">
+                <button
+                    class="slider-dot w-3 h-3 rounded-full bg-white/40 transition-all duration-300 hover:bg-white/70"
+                    data-dot="0"></button>
+                <button
+                    class="slider-dot w-3 h-3 rounded-full bg-white/40 transition-all duration-300 hover:bg-white/70"
+                    data-dot="1"></button>
+                <button
+                    class="slider-dot w-3 h-3 rounded-full bg-white/40 transition-all duration-300 hover:bg-white/70"
+                    data-dot="2"></button>
+                <button
+                    class="slider-dot w-3 h-3 rounded-full bg-white/40 transition-all duration-300 hover:bg-white/70"
+                    data-dot="3"></button>
+                <button
+                    class="slider-dot w-3 h-3 rounded-full bg-white/40 transition-all duration-300 hover:bg-white/70"
+                    data-dot="4"></button>
+            </div>
+            <button id="slider-next"
+                class="w-12 h-12 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center text-white hover:bg-white/30 transition-all duration-300 hover:scale-110">
+                <i data-lucide="chevron-right" class="w-5 h-5"></i>
+            </button>
+        </div>
+
+        <!-- Scroll Indicator -->
+        <div class="absolute bottom-8 right-8 z-20 hidden md:flex flex-col items-center gap-2 animate-bounce">
+            <span class="text-white/60 text-xs uppercase tracking-widest font-medium"
+                style="writing-mode: vertical-rl;">Scroll</span>
+            <i data-lucide="mouse" class="w-5 h-5 text-white/60"></i>
+        </div>
+    </section>
+
+    <!-- =========================================
+         SECTION 2: TENTANG EVENT
+    ========================================= -->
+    <section id="tentang" class="relative py-24 lg:py-32 bg-white overflow-hidden">
+        <!-- Decorative Elements -->
+        <div
+            class="absolute top-0 right-0 w-96 h-96 bg-forest-50 rounded-full -translate-y-1/2 translate-x-1/2 blur-3xl opacity-60">
+        </div>
+        <div
+            class="absolute bottom-0 left-0 w-72 h-72 bg-emerald-50 rounded-full translate-y-1/2 -translate-x-1/2 blur-3xl opacity-60">
+        </div>
+
+        <div class="relative max-w-7xl mx-auto px-6 lg:px-8">
+            <!-- Section Header -->
+            <div class="text-center mb-16 scroll-animate" data-animation="fade-up">
+                <span
+                    class="inline-flex items-center gap-2 px-5 py-2 bg-forest-50 border border-forest-100 rounded-full text-moss text-sm font-semibold mb-4">
+                    <i data-lucide="info" class="w-4 h-4"></i>
+                    <span data-t="tentang_badge">Tentang Event</span>
+                </span>
+                <h2 class="text-3xl md:text-5xl font-heading font-bold text-gray-900 mb-4" data-t="tentang_title">
+                    Harmoni Budaya Kaili <span class="text-leaf">2026</span>
+                </h2>
+                <div class="w-24 h-1.5 bg-gradient-to-r from-leaf to-moss rounded-full mx-auto"></div>
+            </div>
+
+            <!-- Content: Zigzag Layout -->
+            <!-- Row 1: Image Left + Text Right -->
+            <div class="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center mb-16">
+                <!-- Image 1 -->
+                <div class="scroll-animate" data-animation="slide-right">
+                    <div class="relative rounded-3xl overflow-hidden shadow-2xl shadow-forest-200/50 group">
+                        <img src="assets/images/tentang-1.jpg" alt="Masyarakat Kaili"
+                            class="w-full h-[320px] md:h-[420px] object-cover group-hover:scale-105 transition-transform duration-700">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-t from-forest-950/50 via-transparent to-transparent">
+                        </div>
+                        <!-- Stats on Image -->
+                        <div class="absolute bottom-0 left-0 right-0 p-6">
+                            <div class="flex items-center gap-5">
+                                <div class="text-center text-white">
+                                    <div class="text-2xl font-heading font-bold">5+</div>
+                                    <div class="text-xs text-white/80 font-medium" data-t="float_pertunjukan">Pertunjukan<br>Seni</div>
+                                </div>
+                                <div class="w-px h-10 bg-white/30"></div>
+                                <div class="text-center text-white">
+                                    <div class="text-2xl font-heading font-bold">10+</div>
+                                    <div class="text-xs text-white/80 font-medium" data-t="float_workshop">Workshop<br>Budaya</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Text Right: P1 + P2 -->
+                <div class="scroll-animate" data-animation="slide-left">
+                    <div class="space-y-8">
+                        <!-- Paragraph 1 -->
+                        <div class="group">
+                            <div class="flex items-center gap-3 mb-4">
+                                <div
+                                    class="w-11 h-11 bg-gradient-to-br from-leaf to-moss rounded-xl flex items-center justify-center shadow-md">
+                                    <i data-lucide="users" class="w-5 h-5 text-white"></i>
+                                </div>
+                                <h3 class="text-xl font-heading font-bold text-gray-900">Masyarakat Kaili</h3>
+                            </div>
+                            <p class="text-gray-600 leading-relaxed" data-t="tentang_p1">
+                                Masyarakat Kaili merupakan bagian dari sekian banyak masyarakat yang terdapat di Nusantara
+                                yang memiliki adat istiadat tersendiri. Dalam penerapan kehidupan masyarakat Kaili banyak
+                                kebiasaan atau adat istiadat yang masih berlaku. Masyarakat lokal yang memiliki budaya dan
+                                nilai-nilai kearifan adalah aset yang harus dipertahankan. Masyarakat adat memiliki keaslian
+                                kehidupan sebagai orang yang berasal dari suatu kultur atau kelompok menghormati asal usul
+                                mereka. Masyarakat adat memiliki karakter yang membatasi diri dan mengidentikan diri mereka
+                                sebagai sebuah kelompok kecil yang memiliki otoritas dalam menempati sebuah wilayah tertentu.
+                            </p>
+                        </div>
+
+                        <!-- Divider -->
+                        <div class="w-16 h-0.5 bg-gradient-to-r from-leaf to-moss rounded-full"></div>
+
+                        <!-- Paragraph 2 -->
+                        <div class="group">
+                            <div class="flex items-center gap-3 mb-4">
+                                <div
+                                    class="w-11 h-11 bg-gradient-to-br from-emerald-400 to-teal-600 rounded-xl flex items-center justify-center shadow-md">
+                                    <i data-lucide="book-open" class="w-5 h-5 text-white"></i>
+                                </div>
+                                <h3 class="text-xl font-heading font-bold text-gray-900">Budaya & Warisan</h3>
+                            </div>
+                            <p class="text-gray-600 leading-relaxed" data-t="tentang_p2">
+                                Budaya merupakan cara hidup yang berkembang dan dimiliki bersama oleh sebuah kelompok orang
+                                yang diwariskan dari generasi ke generasi. Budaya terbentuk dari banyak unsur termasuk
+                                sistim hidup, adat istiadat, bahasa, perkakas, pakaian, bangunan, dan karya seni. Bahasa
+                                alat komunikasi merupakan salah satu warisan budaya bagian yang tak terpisahkan dari manusia
+                                yang diwariskan secara genetis.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Row 2: Text Left + Image Right -->
+            <div class="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center mb-14">
+                <!-- Text Left: P3 -->
+                <div class="scroll-animate order-2 lg:order-1" data-animation="slide-right">
+                    <div class="group">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div
+                                class="w-11 h-11 bg-gradient-to-br from-teal-400 to-green-600 rounded-xl flex items-center justify-center shadow-md">
+                                <i data-lucide="map" class="w-5 h-5 text-white"></i>
+                            </div>
+                            <h3 class="text-xl font-heading font-bold text-gray-900">Etnik Kaili</h3>
+                        </div>
+                        <p class="text-gray-600 leading-relaxed mb-6" data-t="tentang_p3">
+                            Demikian halnya dengan etnik Kaili adalah salah satu bagian dari suku di Nusantara yang
+                            mendiami sebagian besar wilayah Propinsi Sulawesi Tengah, tepatnya berada di wilayah Kota
+                            Palu. Etnik Kaili memiliki beberapa rumpun sub etnik yaitu <em class="font-semibold text-moss">Ledo,
+                            Tara, Rai, Ado, Ija, Unde, Inde, Taa, Daa, Doi, Rai, Lauje, Tialo, Uma, Moma, Tado, Edo,
+                            Baree</em>. Setiap sub etnis memiliki khas dalam seni budaya tradisinya. Ditandai dengan
+                            banyaknya kesenian Rakyat dari masing-masing subetnis dan upacara adat tradisinya yang berbeda.
+                        </p>
+
+                        <!-- Sub-ethnic Badge Tags -->
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1.5 bg-forest-50 text-moss text-xs font-semibold rounded-full border border-forest-100">Ledo</span>
+                            <span class="px-3 py-1.5 bg-forest-50 text-moss text-xs font-semibold rounded-full border border-forest-100">Tara</span>
+                            <span class="px-3 py-1.5 bg-forest-50 text-moss text-xs font-semibold rounded-full border border-forest-100">Rai</span>
+                            <span class="px-3 py-1.5 bg-forest-50 text-moss text-xs font-semibold rounded-full border border-forest-100">Ado</span>
+                            <span class="px-3 py-1.5 bg-forest-50 text-moss text-xs font-semibold rounded-full border border-forest-100">Ija</span>
+                            <span class="px-3 py-1.5 bg-forest-50 text-moss text-xs font-semibold rounded-full border border-forest-100">Unde</span>
+                            <span class="px-3 py-1.5 bg-forest-50 text-moss text-xs font-semibold rounded-full border border-forest-100">Taa</span>
+                            <span class="px-3 py-1.5 bg-forest-50 text-moss text-xs font-semibold rounded-full border border-forest-100">Daa</span>
+                            <span class="px-3 py-1.5 bg-emerald-50 text-emerald-700 text-xs font-semibold rounded-full border border-emerald-100">Lauje</span>
+                            <span class="px-3 py-1.5 bg-emerald-50 text-emerald-700 text-xs font-semibold rounded-full border border-emerald-100">Uma</span>
+                            <span class="px-3 py-1.5 bg-emerald-50 text-emerald-700 text-xs font-semibold rounded-full border border-emerald-100">Moma</span>
+                            <span class="px-3 py-1.5 bg-emerald-50 text-emerald-700 text-xs font-semibold rounded-full border border-emerald-100">Baree</span>
+                            <span class="px-3 py-1.5 bg-teal-50 text-teal-700 text-xs font-semibold rounded-full border border-teal-100">+6 lainnya</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Image 2 -->
+                <div class="scroll-animate order-1 lg:order-2" data-animation="slide-left">
+                    <div class="relative rounded-3xl overflow-hidden shadow-2xl shadow-forest-200/50 group">
+                        <img src="assets/images/tentang-2.jpg" alt="Budaya Etnik Kaili"
+                            class="w-full h-[320px] md:h-[420px] object-cover group-hover:scale-105 transition-transform duration-700">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-t from-forest-950/40 via-transparent to-transparent">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Event Info Strip -->
+            <div class="scroll-animate grid grid-cols-2 md:grid-cols-4 gap-4" data-animation="fade-up">
+                <div
+                    class="group p-5 bg-gradient-to-br from-forest-50 to-emerald-50 rounded-2xl border border-forest-100 hover:shadow-lg hover:shadow-forest-100/50 transition-all duration-300 hover:-translate-y-1">
+                    <div
+                        class="w-12 h-12 bg-gradient-to-br from-leaf to-moss rounded-xl flex items-center justify-center mb-3 shadow-md group-hover:scale-110 transition-transform duration-300">
+                        <i data-lucide="calendar-days" class="w-6 h-6 text-white"></i>
+                    </div>
+                    <h4 class="font-bold text-gray-900 mb-1" data-t="tentang_tanggal">Tanggal</h4>
+                    <p class="text-sm text-gray-600" data-t="tentang_tanggal_val">5 Juni 2026</p>
+                </div>
+                <div
+                    class="group p-5 bg-gradient-to-br from-forest-50 to-emerald-50 rounded-2xl border border-forest-100 hover:shadow-lg hover:shadow-forest-100/50 transition-all duration-300 hover:-translate-y-1">
+                    <div
+                        class="w-12 h-12 bg-gradient-to-br from-leaf to-moss rounded-xl flex items-center justify-center mb-3 shadow-md group-hover:scale-110 transition-transform duration-300">
+                        <i data-lucide="map-pin" class="w-6 h-6 text-white"></i>
+                    </div>
+                    <h4 class="font-bold text-gray-900 mb-1" data-t="tentang_lokasi">Lokasi</h4>
+                    <p class="text-sm text-gray-600">Palu, Sulawesi Tengah</p>
+                </div>
+                <div
+                    class="group p-5 bg-gradient-to-br from-forest-50 to-emerald-50 rounded-2xl border border-forest-100 hover:shadow-lg hover:shadow-forest-100/50 transition-all duration-300 hover:-translate-y-1">
+                    <div
+                        class="w-12 h-12 bg-gradient-to-br from-leaf to-moss rounded-xl flex items-center justify-center mb-3 shadow-md group-hover:scale-110 transition-transform duration-300">
+                        <i data-lucide="clock" class="w-6 h-6 text-white"></i>
+                    </div>
+                    <h4 class="font-bold text-gray-900 mb-1" data-t="tentang_waktu">Waktu</h4>
+                    <p class="text-sm text-gray-600">08:00 - 22:00 WITA</p>
+                </div>
+                <div
+                    class="group p-5 bg-gradient-to-br from-forest-50 to-emerald-50 rounded-2xl border border-forest-100 hover:shadow-lg hover:shadow-forest-100/50 transition-all duration-300 hover:-translate-y-1">
+                    <div
+                        class="w-12 h-12 bg-gradient-to-br from-leaf to-moss rounded-xl flex items-center justify-center mb-3 shadow-md group-hover:scale-110 transition-transform duration-300">
+                        <i data-lucide="ticket" class="w-6 h-6 text-white"></i>
+                    </div>
+                    <h4 class="font-bold text-gray-900 mb-1" data-t="tentang_tiket">Tiket</h4>
+                    <p class="text-sm text-gray-600" data-t="tentang_tiket_val">Gratis / Free</p>
+                </div>
+            </div>
+
+            <!-- Event Highlights -->
+            <div class="grid md:grid-cols-3 gap-8 mt-20">
+                <div class="scroll-animate group text-center p-8 rounded-3xl bg-gradient-to-b from-white to-forest-50/50 border border-forest-100/50 hover:shadow-xl hover:shadow-forest-100/30 transition-all duration-500 hover:-translate-y-2"
+                    data-animation="fade-up">
+                    <div
+                        class="w-20 h-20 mx-auto bg-gradient-to-br from-green-400 to-emerald-600 rounded-2xl flex items-center justify-center mb-6 shadow-lg shadow-green-200/60 group-hover:rotate-6 transition-transform duration-300">
+                        <i data-lucide="sparkles" class="w-10 h-10 text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-heading font-bold text-gray-900 mb-3" data-t="highlight1_title">Pertunjukan
+                        Seni</h3>
+                    <p class="text-gray-600 leading-relaxed" data-t="highlight1_desc">Tarian Raego, musik Lalove, dan
+                        seni pertunjukan Kaili dalam panggung spektakuler.</p>
+                </div>
+                <div class="scroll-animate group text-center p-8 rounded-3xl bg-gradient-to-b from-white to-forest-50/50 border border-forest-100/50 hover:shadow-xl hover:shadow-forest-100/30 transition-all duration-500 hover:-translate-y-2"
+                    data-animation="fade-up" style="animation-delay: 0.2s;">
+                    <div
+                        class="w-20 h-20 mx-auto bg-gradient-to-br from-emerald-400 to-teal-600 rounded-2xl flex items-center justify-center mb-6 shadow-lg shadow-emerald-200/60 group-hover:rotate-6 transition-transform duration-300">
+                        <i data-lucide="leaf" class="w-10 h-10 text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-heading font-bold text-gray-900 mb-3" data-t="highlight2_title">Aksi
+                        Lingkungan</h3>
+                    <p class="text-gray-600 leading-relaxed" data-t="highlight2_desc">Penanaman pohon, workshop daur
+                        ulang, dan edukasi lingkungan hidup untuk semua usia.</p>
+                </div>
+                <div class="scroll-animate group text-center p-8 rounded-3xl bg-gradient-to-b from-white to-forest-50/50 border border-forest-100/50 hover:shadow-xl hover:shadow-forest-100/30 transition-all duration-500 hover:-translate-y-2"
+                    data-animation="fade-up" style="animation-delay: 0.4s;">
+                    <div
+                        class="w-20 h-20 mx-auto bg-gradient-to-br from-teal-400 to-green-600 rounded-2xl flex items-center justify-center mb-6 shadow-lg shadow-teal-200/60 group-hover:rotate-6 transition-transform duration-300">
+                        <i data-lucide="store" class="w-10 h-10 text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-heading font-bold text-gray-900 mb-3" data-t="highlight3_title">Pameran &
+                        Kuliner</h3>
+                    <p class="text-gray-600 leading-relaxed" data-t="highlight3_desc">Pameran kerajinan tradisional dan
+                        kuliner khas Sulawesi Tengah yang menggugah selera.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- =========================================
+         SECTION 3: TENTANG YAYASAN
+    ========================================= -->
+    <section id="yayasan"
+        class="relative py-24 lg:py-32 bg-gradient-to-b from-forest-50/30 via-white to-white overflow-hidden">
+        <!-- Decorative -->
+        <div class="absolute top-20 left-20 w-64 h-64 bg-leaf/5 rounded-full blur-3xl"></div>
+        <div class="absolute bottom-20 right-20 w-80 h-80 bg-emerald-500/5 rounded-full blur-3xl"></div>
+
+        <div class="relative max-w-7xl mx-auto px-6 lg:px-8">
+            <!-- Section Header -->
+            <div class="text-center mb-16 scroll-animate" data-animation="fade-up">
+                <span
+                    class="inline-flex items-center gap-2 px-5 py-2 bg-forest-50 border border-forest-100 rounded-full text-moss text-sm font-semibold mb-4">
+                    <i data-lucide="building-2" class="w-4 h-4"></i>
+                    <span data-t="yayasan_badge">Penyelenggara</span>
+                </span>
+                <h2 class="text-3xl md:text-5xl font-heading font-bold text-gray-900 mb-4" data-t="yayasan_title">
+                    Yayasan <span class="text-leaf">Bulava Nusantara Permai</span>
+                </h2>
+                <div class="w-24 h-1.5 bg-gradient-to-r from-leaf to-moss rounded-full mx-auto"></div>
+            </div>
+
+            <div class="grid lg:grid-cols-5 gap-12 items-center">
+                <!-- Left Visual (2 cols) -->
+                <div class="lg:col-span-2 scroll-animate" data-animation="slide-right">
+                    <div class="relative">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-br from-leaf/20 to-moss/20 rounded-3xl rotate-6 scale-105">
+                        </div>
+                        <div class="relative rounded-3xl overflow-hidden shadow-2xl shadow-forest-200/40">
+                            <img src="assets/images/yayasan-banner.jpeg" alt="Yayasan Bulava Nusantara Permai"
+                                class="w-full h-[400px] object-cover">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Content (3 cols) -->
+                <div class="lg:col-span-3 scroll-animate" data-animation="slide-left">
+                    <h3 class="text-2xl font-heading font-bold text-gray-900 mb-6" data-t="yayasan_subtitle">Lahir dari
+                        Cinta untuk Budaya & Lingkungan</h3>
+                    <div class="space-y-5 text-gray-600 leading-relaxed">
+                        <p data-t="yayasan_p1">
+                            Yayasan Bulava Nusantara Permai telah melaksanakan kegiatan pelestarian dengan mengkoleksi
+                            Busana tradisional, benda-benda budaya suku Kaili dan menggali nilai-nilai pendidikan Lokal
+                            Masyarakat Kaili, telah beberapa kali mengikuti kegiatan budaya di daerah, dan Nasional,
+                            serta telah beberapa kali diminta pemerintah maupun Swasta menjadi juri lomba kebudayaan
+                            di beberapa kabupaten di Sulawesi Tengah. Maka sangat tepat bila Yayasan Bulava Nusantara
+                            mendapat kesempatan untuk melestarikan budaya, dalam Bidang Pendidikan.
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- =========================================
+         SECTION 4: FORM PENDAFTARAN (Pengunjung & Penampil)
+    ========================================= -->
+    <section id="pendaftaran" class="relative py-24 lg:py-32 bg-white overflow-hidden">
+        <!-- Decorative -->
+        <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-leaf via-emerald-400 to-moss"></div>
+        <div
+            class="absolute top-1/2 right-0 w-96 h-96 bg-forest-50 rounded-full -translate-y-1/2 translate-x-1/2 blur-3xl opacity-50">
+        </div>
+
+        <div class="relative max-w-7xl mx-auto px-6 lg:px-8">
+            <!-- Section Header -->
+            <div class="text-center mb-16 scroll-animate" data-animation="fade-up">
+                <span
+                    class="inline-flex items-center gap-2 px-5 py-2 bg-forest-50 border border-forest-100 rounded-full text-moss text-sm font-semibold mb-4">
+                    <i data-lucide="clipboard-list" class="w-4 h-4"></i>
+                    <span data-t="daftar_badge">Formulir Pendaftaran</span>
+                </span>
+                <h2 class="text-3xl md:text-5xl font-heading font-bold text-gray-900 mb-4" data-t="daftar_title">
+                    Bergabung <span class="text-leaf">Bersama Kami</span>
+                </h2>
+                <p class="text-gray-500 max-w-2xl mx-auto" data-t="daftar_desc">Daftarkan diri Anda sebagai pengunjung
+                    atau penampil dalam event Harmoni Budaya Kaili 2026</p>
+                <div class="w-24 h-1.5 bg-gradient-to-r from-leaf to-moss rounded-full mx-auto mt-4"></div>
+            </div>
+
+            <!-- Tab Selector -->
+            <div class="flex justify-center mb-12 scroll-animate" data-animation="fade-up">
+                <div class="inline-flex bg-forest-50 p-1.5 rounded-2xl border border-forest-100">
+                    <button id="tab-pengunjung"
+                        class="form-tab active-tab px-8 py-3 rounded-xl text-sm font-bold transition-all duration-300 flex items-center gap-2"
+                        data-tab="pengunjung">
+                        <i data-lucide="user" class="w-4 h-4"></i>
+                        <span data-t="tab_pengunjung">Pengunjung</span>
+                    </button>
+                    <button id="tab-penampil"
+                        class="form-tab px-8 py-3 rounded-xl text-sm font-bold transition-all duration-300 flex items-center gap-2"
+                        data-tab="penampil">
+                        <i data-lucide="mic-2" class="w-4 h-4"></i>
+                        <span data-t="tab_penampil">Penampil</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Form Container -->
+            <div class="max-w-3xl mx-auto">
+                <!-- Pengunjung Form -->
+                <div id="form-pengunjung" class="form-panel scroll-animate" data-animation="fade-up">
+                    <div
+                        class="bg-white rounded-3xl shadow-xl shadow-gray-200/50 border border-gray-100 overflow-hidden">
+                        <div class="bg-gradient-to-r from-leaf to-moss p-6 text-white">
+                            <div class="flex items-center gap-3">
+                                <div class="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center">
+                                    <i data-lucide="user-plus" class="w-6 h-6"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-xl font-bold" data-t="form_pengunjung_title">Pendaftaran Pengunjung
+                                    </h3>
+                                    <p class="text-white/80 text-sm" data-t="form_pengunjung_sub">Gratis — Terbatas
+                                        untuk 500 peserta</p>
+                                </div>
+                            </div>
+                        </div>
+                        <form id="formPengunjung" class="p-8 space-y-6 web3form">
+                            <input type="hidden" name="form_type" value="pengunjung">
+                            <div class="grid md:grid-cols-2 gap-6">
+                                <div>
+                                    <label class="block text-sm font-semibold text-gray-700 mb-2"
+                                        data-t="label_nama">Nama Lengkap <span class="text-red-500">*</span></label>
+                                    <input type="text" name="nama" required
+                                        class="form-input w-full px-5 py-3.5 rounded-xl border border-gray-200 bg-gray-50/50 focus:bg-white focus:border-leaf focus:ring-4 focus:ring-leaf/10 outline-none transition-all duration-300 text-gray-800"
+                                        placeholder="Masukkan nama lengkap">
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-semibold text-gray-700 mb-2">Email <span
+                                            class="text-red-500">*</span></label>
+                                    <input type="email" name="email" required
+                                        class="form-input w-full px-5 py-3.5 rounded-xl border border-gray-200 bg-gray-50/50 focus:bg-white focus:border-leaf focus:ring-4 focus:ring-leaf/10 outline-none transition-all duration-300 text-gray-800"
+                                        placeholder="email@contoh.com">
+                                </div>
+                            </div>
+                            <div class="grid md:grid-cols-2 gap-6">
+                                <div>
+                                    <label class="block text-sm font-semibold text-gray-700 mb-2">No. WhatsApp <span
+                                            class="text-red-500">*</span></label>
+                                    <input type="tel" name="whatsapp" required
+                                        class="form-input w-full px-5 py-3.5 rounded-xl border border-gray-200 bg-gray-50/50 focus:bg-white focus:border-leaf focus:ring-4 focus:ring-leaf/10 outline-none transition-all duration-300 text-gray-800"
+                                        placeholder="08xxxxxxxxxx">
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-semibold text-gray-700 mb-2">Asal Kota <span
+                                            class="text-red-500">*</span></label>
+                                    <input type="text" name="kota" required
+                                        class="form-input w-full px-5 py-3.5 rounded-xl border border-gray-200 bg-gray-50/50 focus:bg-white focus:border-leaf focus:ring-4 focus:ring-leaf/10 outline-none transition-all duration-300 text-gray-800"
+                                        placeholder="Kota asal Anda">
+                                </div>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-700 mb-2">Jumlah Peserta</label>
+                                <select name="jumlah_peserta"
+                                    class="form-input w-full px-5 py-3.5 rounded-xl border border-gray-200 bg-gray-50/50 focus:bg-white focus:border-leaf focus:ring-4 focus:ring-leaf/10 outline-none transition-all duration-300 text-gray-800">
+                                    <option value="1">1 Orang</option>
+                                    <option value="2">2 Orang</option>
+                                    <option value="3">3 Orang</option>
+                                    <option value="4">4 Orang</option>
+                                    <option value="5+">5+ Orang (Rombongan)</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-700 mb-2">Pesan Tambahan</label>
+                                <textarea name="pesan" rows="3"
+                                    class="form-input w-full px-5 py-3.5 rounded-xl border border-gray-200 bg-gray-50/50 focus:bg-white focus:border-leaf focus:ring-4 focus:ring-leaf/10 outline-none transition-all duration-300 text-gray-800 resize-none"
+                                    placeholder="Tulis pesan atau pertanyaan (opsional)"></textarea>
+                            </div>
+                            <button type="submit"
+                                class="w-full py-4 bg-gradient-to-r from-leaf to-moss text-white font-bold rounded-xl shadow-lg shadow-leaf/30 hover:shadow-leaf/50 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 flex items-center justify-center gap-2 text-lg">
+                                <i data-lucide="send" class="w-5 h-5"></i>
+                                <span data-t="btn_kirim_pengunjung">Kirim Pendaftaran</span>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Penampil Form -->
+                <div id="form-penampil" class="form-panel hidden scroll-animate" data-animation="fade-up">
+                    <div
+                        class="bg-white rounded-3xl shadow-xl shadow-gray-200/50 border border-gray-100 overflow-hidden">
+                        <div class="bg-gradient-to-r from-moss to-forest-800 p-6 text-white">
+                            <div class="flex items-center gap-3">
+                                <div class="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center">
+                                    <i data-lucide="mic-2" class="w-6 h-6"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-xl font-bold" data-t="form_penampil_title">Pendaftaran Penampil</h3>
+                                    <p class="text-white/80 text-sm" data-t="form_penampil_sub">Tampilkan bakat Anda di
+                                        panggung Harmoni Budaya Kaili</p>
+                                </div>
+                            </div>
+                        </div>
+                        <form id="formPenampil" class="p-8 space-y-6 web3form">
+                            <input type="hidden" name="form_type" value="penampil">
+                            <div class="grid md:grid-cols-2 gap-6">
+                                <div>
+                                    <label class="block text-sm font-semibold text-gray-700 mb-2">Nama Lengkap / Nama
+                                        Grup <span class="text-red-500">*</span></label>
+                                    <input type="text" name="nama" required
+                                        class="form-input w-full px-5 py-3.5 rounded-xl border border-gray-200 bg-gray-50/50 focus:bg-white focus:border-leaf focus:ring-4 focus:ring-leaf/10 outline-none transition-all duration-300 text-gray-800"
+                                        placeholder="Nama atau nama grup">
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-semibold text-gray-700 mb-2">Email <span
+                                            class="text-red-500">*</span></label>
+                                    <input type="email" name="email" required
+                                        class="form-input w-full px-5 py-3.5 rounded-xl border border-gray-200 bg-gray-50/50 focus:bg-white focus:border-leaf focus:ring-4 focus:ring-leaf/10 outline-none transition-all duration-300 text-gray-800"
+                                        placeholder="email@contoh.com">
+                                </div>
+                            </div>
+                            <div class="grid md:grid-cols-2 gap-6">
+                                <div>
+                                    <label class="block text-sm font-semibold text-gray-700 mb-2">No. WhatsApp <span
+                                            class="text-red-500">*</span></label>
+                                    <input type="tel" name="whatsapp" required
+                                        class="form-input w-full px-5 py-3.5 rounded-xl border border-gray-200 bg-gray-50/50 focus:bg-white focus:border-leaf focus:ring-4 focus:ring-leaf/10 outline-none transition-all duration-300 text-gray-800"
+                                        placeholder="08xxxxxxxxxx">
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-semibold text-gray-700 mb-2">Jenis Pertunjukan
+                                        <span class="text-red-500">*</span></label>
+                                    <select name="jenis_pertunjukan" required
+                                        class="form-input w-full px-5 py-3.5 rounded-xl border border-gray-200 bg-gray-50/50 focus:bg-white focus:border-leaf focus:ring-4 focus:ring-leaf/10 outline-none transition-all duration-300 text-gray-800">
+                                        <option value="">-- Pilih Jenis --</option>
+                                        <option value="tarian">Tarian Tradisional</option>
+                                        <option value="musik">Musik Tradisional</option>
+                                        <option value="teater">Teater / Drama</option>
+                                        <option value="puisi">Puisi / Sastra</option>
+                                        <option value="fashion">Fashion / Busana Adat</option>
+                                        <option value="lainnya">Lainnya</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="grid md:grid-cols-2 gap-6">
+                                <div>
+                                    <label class="block text-sm font-semibold text-gray-700 mb-2">Jumlah Anggota <span
+                                            class="text-red-500">*</span></label>
+                                    <input type="number" name="jumlah_anggota" required min="1"
+                                        class="form-input w-full px-5 py-3.5 rounded-xl border border-gray-200 bg-gray-50/50 focus:bg-white focus:border-leaf focus:ring-4 focus:ring-leaf/10 outline-none transition-all duration-300 text-gray-800"
+                                        placeholder="Jumlah anggota">
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-semibold text-gray-700 mb-2">Durasi Tampil (menit)
+                                        <span class="text-red-500">*</span></label>
+                                    <input type="number" name="durasi" required min="1"
+                                        class="form-input w-full px-5 py-3.5 rounded-xl border border-gray-200 bg-gray-50/50 focus:bg-white focus:border-leaf focus:ring-4 focus:ring-leaf/10 outline-none transition-all duration-300 text-gray-800"
+                                        placeholder="Estimasi durasi">
+                                </div>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-700 mb-2">Deskripsi Pertunjukan
+                                    <span class="text-red-500">*</span></label>
+                                <textarea name="deskripsi" rows="4" required
+                                    class="form-input w-full px-5 py-3.5 rounded-xl border border-gray-200 bg-gray-50/50 focus:bg-white focus:border-leaf focus:ring-4 focus:ring-leaf/10 outline-none transition-all duration-300 text-gray-800 resize-none"
+                                    placeholder="Jelaskan pertunjukan yang akan Anda tampilkan..."></textarea>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-700 mb-2">Kebutuhan Teknis</label>
+                                <textarea name="kebutuhan_teknis" rows="3"
+                                    class="form-input w-full px-5 py-3.5 rounded-xl border border-gray-200 bg-gray-50/50 focus:bg-white focus:border-leaf focus:ring-4 focus:ring-leaf/10 outline-none transition-all duration-300 text-gray-800 resize-none"
+                                    placeholder="Sound system, lighting, properti, dll (opsional)"></textarea>
+                            </div>
+                            <button type="submit"
+                                class="w-full py-4 bg-gradient-to-r from-moss to-forest-800 text-white font-bold rounded-xl shadow-lg shadow-forest-800/30 hover:shadow-forest-800/50 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 flex items-center justify-center gap-2 text-lg">
+                                <i data-lucide="send" class="w-5 h-5"></i>
+                                <span data-t="btn_kirim_penampil">Kirim Pendaftaran Penampil</span>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- =========================================
+         SECTION 5: KEMITRAAN (Sponsorship & Donatur)
+    ========================================= -->
+    <section id="kemitraan"
+        class="relative py-24 lg:py-32 bg-gradient-to-b from-forest-950 to-forest-900 overflow-hidden">
+        <!-- Decorative -->
+        <div class="absolute inset-0">
+            <div class="absolute top-0 left-1/4 w-96 h-96 bg-leaf/10 rounded-full blur-3xl"></div>
+            <div class="absolute bottom-0 right-1/4 w-80 h-80 bg-emerald-500/10 rounded-full blur-3xl"></div>
+            <div
+                class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-moss/10 rounded-full blur-3xl">
+            </div>
+        </div>
+
+        <div class="relative max-w-7xl mx-auto px-6 lg:px-8">
+            <!-- Section Header -->
+            <div class="text-center mb-16 scroll-animate" data-animation="fade-up">
+                <span
+                    class="inline-flex items-center gap-2 px-5 py-2 bg-white/10 border border-white/10 rounded-full text-leaf text-sm font-semibold mb-4">
+                    <i data-lucide="handshake" class="w-4 h-4"></i>
+                    <span data-t="mitra_badge">Kemitraan</span>
+                </span>
+                <h2 class="text-3xl md:text-5xl font-heading font-bold text-white mb-4" data-t="mitra_title">
+                    Sponsorship & <span
+                        class="text-transparent bg-clip-text bg-gradient-to-r from-leaf to-emerald-400">Donasi</span>
+                </h2>
+                <p class="text-gray-400 max-w-2xl mx-auto" data-t="mitra_desc">Jadilah bagian dari pergerakan
+                    pelestarian budaya dan lingkungan. Dukung event ini sebagai sponsor atau donatur.</p>
+                <div class="w-24 h-1.5 bg-gradient-to-r from-leaf to-emerald-400 rounded-full mx-auto mt-4"></div>
+            </div>
+
+            <!-- Sponsorship Tiers -->
+            <div class="grid md:grid-cols-3 gap-8 mb-16">
+                <!-- Tier 1 -->
+                <div class="scroll-animate group relative bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl p-8 hover:bg-white/10 hover:border-leaf/30 transition-all duration-500 hover:-translate-y-2"
+                    data-animation="fade-up">
+                    <div
+                        class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-green-400 to-transparent rounded-t-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                    </div>
+                    <div
+                        class="w-16 h-16 bg-gradient-to-br from-green-400 to-green-600 rounded-2xl flex items-center justify-center mb-6 shadow-lg shadow-green-500/20 group-hover:scale-110 transition-transform">
+                        <i data-lucide="gem" class="w-8 h-8 text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-heading font-bold text-white mb-2">Sponsor Platinum</h3>
+                    <p class="text-gray-400 text-sm mb-6 leading-relaxed">Logo utama di semua media, booth eksklusif,
+                        dan kesempatan branding di panggung utama.</p>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-center gap-3 text-gray-300 text-sm"><i data-lucide="check-circle"
+                                class="w-5 h-5 text-leaf flex-shrink-0"></i> Logo di banner utama</li>
+                        <li class="flex items-center gap-3 text-gray-300 text-sm"><i data-lucide="check-circle"
+                                class="w-5 h-5 text-leaf flex-shrink-0"></i> Booth 3x3 meter</li>
+                        <li class="flex items-center gap-3 text-gray-300 text-sm"><i data-lucide="check-circle"
+                                class="w-5 h-5 text-leaf flex-shrink-0"></i> Mention di panggung</li>
+                        <li class="flex items-center gap-3 text-gray-300 text-sm"><i data-lucide="check-circle"
+                                class="w-5 h-5 text-leaf flex-shrink-0"></i> 20 tiket VIP</li>
+                    </ul>
+                    <button onclick="openWhatsApp('sponsor_platinum')"
+                        class="w-full py-3.5 bg-gradient-to-r from-green-500 to-emerald-600 text-white font-bold rounded-xl hover:shadow-lg hover:shadow-green-500/30 hover:scale-105 active:scale-95 transition-all duration-300 flex items-center justify-center gap-2">
+                        <i data-lucide="message-circle" class="w-5 h-5"></i>
+                        Hubungi via WhatsApp
+                    </button>
+                </div>
+
+                <!-- Tier 2 -->
+                <div class="scroll-animate group relative bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl p-8 hover:bg-white/10 hover:border-leaf/30 transition-all duration-500 hover:-translate-y-2"
+                    data-animation="fade-up" style="animation-delay: 0.2s;">
+                    <div
+                        class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-emerald-400 to-transparent rounded-t-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                    </div>
+                    <div
+                        class="w-16 h-16 bg-gradient-to-br from-emerald-400 to-teal-600 rounded-2xl flex items-center justify-center mb-6 shadow-lg shadow-emerald-500/20 group-hover:scale-110 transition-transform">
+                        <i data-lucide="award" class="w-8 h-8 text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-heading font-bold text-white mb-2">Sponsor Gold</h3>
+                    <p class="text-gray-400 text-sm mb-6 leading-relaxed">Penempatan logo di media promosi dan
+                        kesempatan interaksi langsung dengan peserta.</p>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-center gap-3 text-gray-300 text-sm"><i data-lucide="check-circle"
+                                class="w-5 h-5 text-leaf flex-shrink-0"></i> Logo di backdrop</li>
+                        <li class="flex items-center gap-3 text-gray-300 text-sm"><i data-lucide="check-circle"
+                                class="w-5 h-5 text-leaf flex-shrink-0"></i> Booth 2x2 meter</li>
+                        <li class="flex items-center gap-3 text-gray-300 text-sm"><i data-lucide="check-circle"
+                                class="w-5 h-5 text-leaf flex-shrink-0"></i> 10 tiket VIP</li>
+                        <li class="flex items-center gap-3 text-gray-300 text-sm"><i data-lucide="check-circle"
+                                class="w-5 h-5 text-leaf flex-shrink-0"></i> Social media post</li>
+                    </ul>
+                    <button onclick="openWhatsApp('sponsor_gold')"
+                        class="w-full py-3.5 bg-gradient-to-r from-emerald-500 to-teal-600 text-white font-bold rounded-xl hover:shadow-lg hover:shadow-emerald-500/30 hover:scale-105 active:scale-95 transition-all duration-300 flex items-center justify-center gap-2">
+                        <i data-lucide="message-circle" class="w-5 h-5"></i>
+                        Hubungi via WhatsApp
+                    </button>
+                </div>
+
+                <!-- Donatur -->
+                <div class="scroll-animate group relative bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl p-8 hover:bg-white/10 hover:border-leaf/30 transition-all duration-500 hover:-translate-y-2"
+                    data-animation="fade-up" style="animation-delay: 0.4s;">
+                    <div
+                        class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-teal-400 to-transparent rounded-t-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                    </div>
+                    <div
+                        class="w-16 h-16 bg-gradient-to-br from-teal-400 to-cyan-600 rounded-2xl flex items-center justify-center mb-6 shadow-lg shadow-teal-500/20 group-hover:scale-110 transition-transform">
+                        <i data-lucide="heart" class="w-8 h-8 text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-heading font-bold text-white mb-2">Donatur</h3>
+                    <p class="text-gray-400 text-sm mb-6 leading-relaxed">Setiap kontribusi berarti. Dukung pelestarian
+                        budaya dan lingkungan sesuai kemampuan Anda.</p>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-center gap-3 text-gray-300 text-sm"><i data-lucide="check-circle"
+                                class="w-5 h-5 text-leaf flex-shrink-0"></i> Sertifikat apresiasi</li>
+                        <li class="flex items-center gap-3 text-gray-300 text-sm"><i data-lucide="check-circle"
+                                class="w-5 h-5 text-leaf flex-shrink-0"></i> Nama di wall of fame</li>
+                        <li class="flex items-center gap-3 text-gray-300 text-sm"><i data-lucide="check-circle"
+                                class="w-5 h-5 text-leaf flex-shrink-0"></i> Tiket event</li>
+                        <li class="flex items-center gap-3 text-gray-300 text-sm"><i data-lucide="check-circle"
+                                class="w-5 h-5 text-leaf flex-shrink-0"></i> Laporan kegiatan</li>
+                    </ul>
+                    <button onclick="openWhatsApp('donatur')"
+                        class="w-full py-3.5 bg-gradient-to-r from-teal-500 to-cyan-600 text-white font-bold rounded-xl hover:shadow-lg hover:shadow-teal-500/30 hover:scale-105 active:scale-95 transition-all duration-300 flex items-center justify-center gap-2">
+                        <i data-lucide="message-circle" class="w-5 h-5"></i>
+                        Kirim Donasi via WhatsApp
+                    </button>
+                </div>
+            </div>
+
+            <!-- Kemitraan Form -->
+            <div class="max-w-2xl mx-auto scroll-animate" data-animation="fade-up">
+                <div class="bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl p-8 md:p-10">
+                    <h3 class="text-2xl font-heading font-bold text-white mb-2 text-center">Ajukan Kemitraan</h3>
+                    <p class="text-gray-400 text-center mb-8">Isi form berikut dan kami akan menghubungi Anda via
+                        WhatsApp</p>
+                    <form id="formKemitraan" class="space-y-6">
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-300 mb-2">Nama / Perusahaan <span
+                                        class="text-red-400">*</span></label>
+                                <input type="text" name="nama_mitra" required
+                                    class="w-full px-5 py-3.5 rounded-xl bg-white/10 border border-white/10 text-white placeholder-gray-500 focus:bg-white/15 focus:border-leaf/50 focus:ring-4 focus:ring-leaf/10 outline-none transition-all duration-300"
+                                    placeholder="Nama Anda / Perusahaan">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-300 mb-2">No. WhatsApp <span
+                                        class="text-red-400">*</span></label>
+                                <input type="tel" name="wa_mitra" required
+                                    class="w-full px-5 py-3.5 rounded-xl bg-white/10 border border-white/10 text-white placeholder-gray-500 focus:bg-white/15 focus:border-leaf/50 focus:ring-4 focus:ring-leaf/10 outline-none transition-all duration-300"
+                                    placeholder="08xxxxxxxxxx">
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-300 mb-2">Jenis Kemitraan <span
+                                    class="text-red-400">*</span></label>
+                            <select name="jenis_mitra" required
+                                class="w-full px-5 py-3.5 rounded-xl bg-white/10 border border-white/10 text-white focus:bg-white/15 focus:border-leaf/50 focus:ring-4 focus:ring-leaf/10 outline-none transition-all duration-300">
+                                <option value="" class="text-gray-900">-- Pilih Jenis Kemitraan --</option>
+                                <option value="sponsor_platinum" class="text-gray-900">Sponsor Platinum</option>
+                                <option value="sponsor_gold" class="text-gray-900">Sponsor Gold</option>
+                                <option value="donatur" class="text-gray-900">Donatur</option>
+                                <option value="media_partner" class="text-gray-900">Media Partner</option>
+                                <option value="lainnya" class="text-gray-900">Lainnya</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-300 mb-2">Pesan</label>
+                            <textarea name="pesan_mitra" rows="3"
+                                class="w-full px-5 py-3.5 rounded-xl bg-white/10 border border-white/10 text-white placeholder-gray-500 focus:bg-white/15 focus:border-leaf/50 focus:ring-4 focus:ring-leaf/10 outline-none transition-all duration-300 resize-none"
+                                placeholder="Tulis pesan atau pertanyaan Anda..."></textarea>
+                        </div>
+                        <button type="submit"
+                            class="w-full py-4 bg-gradient-to-r from-leaf to-emerald-500 text-white font-bold rounded-xl shadow-lg shadow-leaf/30 hover:shadow-leaf/50 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 flex items-center justify-center gap-2 text-lg">
+                            <i data-lucide="message-circle" class="w-5 h-5"></i>
+                            Kirim via WhatsApp
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- =========================================
+         SECTION 6: SOSIAL MEDIA
+    ========================================= -->
+    <section id="sosmed" class="relative py-24 lg:py-32 bg-white overflow-hidden">
+        <!-- Decorative -->
+        <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-leaf via-emerald-400 to-moss"></div>
+
+        <div class="relative max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="text-center mb-16 scroll-animate" data-animation="fade-up">
+                <span
+                    class="inline-flex items-center gap-2 px-5 py-2 bg-forest-50 border border-forest-100 rounded-full text-moss text-sm font-semibold mb-4">
+                    <i data-lucide="share-2" class="w-4 h-4"></i>
+                    <span data-t="sosmed_badge">Ikuti Kami</span>
+                </span>
+                <h2 class="text-3xl md:text-5xl font-heading font-bold text-gray-900 mb-4" data-t="sosmed_title">
+                    Tetap <span class="text-leaf">Terhubung</span>
+                </h2>
+                <p class="text-gray-500 max-w-2xl mx-auto" data-t="sosmed_desc">Ikuti media sosial kami untuk update
+                    terbaru seputar event Harmoni Budaya Kaili 2026</p>
+                <div class="w-24 h-1.5 bg-gradient-to-r from-leaf to-moss rounded-full mx-auto mt-4"></div>
+            </div>
+
+            <!-- Social Media Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+                <!-- Instagram -->
+                <a href="https://instagram.com/harmonibudayakaili" target="_blank" rel="noopener"
+                    class="scroll-animate group relative overflow-hidden rounded-3xl p-8 text-center bg-gradient-to-br from-purple-50 to-pink-50 border border-purple-100 hover:shadow-xl hover:shadow-purple-100/50 hover:-translate-y-2 transition-all duration-500"
+                    data-animation="fade-up">
+                    <div
+                        class="absolute inset-0 bg-gradient-to-br from-purple-500 to-pink-500 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                    </div>
+                    <div class="relative z-10">
+                        <div
+                            class="w-16 h-16 mx-auto bg-gradient-to-br from-purple-500 to-pink-500 rounded-2xl flex items-center justify-center mb-4 shadow-lg shadow-purple-200/60 group-hover:bg-white/20 group-hover:shadow-none transition-all duration-300 group-hover:scale-110">
+                            <svg class="w-8 h-8 text-white" viewBox="0 0 24 24" fill="currentColor">
+                                <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 7.315c-2.585 0-4.685 2.1-4.685 4.685s2.1 4.685 4.685 4.685 4.685-2.1 4.685-4.685-2.1-4.685-4.685-4.685zm0 7.23a2.545 2.545 0 110-5.09 2.545 2.545 0 010 5.09zm3.225-5.902a1.08 1.08 0 11-2.16 0 1.08 1.08 0 012.16 0z" />
+                            </svg>
+                        </div>
+                        <h4 class="font-bold text-gray-900 group-hover:text-white transition-colors duration-300">
+                            Instagram</h4>
+                        <p class="text-sm text-gray-500 group-hover:text-white/80 transition-colors duration-300 mt-1">
+                            @harmonibudayakaili</p>
+                    </div>
+                </a>
+
+                <!-- Facebook -->
+                <a href="https://facebook.com/harmonibudayakaili" target="_blank" rel="noopener"
+                    class="scroll-animate group relative overflow-hidden rounded-3xl p-8 text-center bg-gradient-to-br from-blue-50 to-indigo-50 border border-blue-100 hover:shadow-xl hover:shadow-blue-100/50 hover:-translate-y-2 transition-all duration-500"
+                    data-animation="fade-up" style="animation-delay: 0.1s;">
+                    <div
+                        class="absolute inset-0 bg-gradient-to-br from-blue-500 to-indigo-600 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                    </div>
+                    <div class="relative z-10">
+                        <div
+                            class="w-16 h-16 mx-auto bg-gradient-to-br from-blue-500 to-indigo-600 rounded-2xl flex items-center justify-center mb-4 shadow-lg shadow-blue-200/60 group-hover:bg-white/20 group-hover:shadow-none transition-all duration-300 group-hover:scale-110">
+                            <svg class="w-8 h-8 text-white" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.469h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.469h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+                            </svg>
+                        </div>
+                        <h4 class="font-bold text-gray-900 group-hover:text-white transition-colors duration-300">
+                            Facebook</h4>
+                        <p class="text-sm text-gray-500 group-hover:text-white/80 transition-colors duration-300 mt-1">
+                            Harmoni Budaya Kaili</p>
+                    </div>
+                </a>
+
+                <!-- YouTube -->
+                <a href="https://youtube.com/@harmonibudayakaili" target="_blank" rel="noopener"
+                    class="scroll-animate group relative overflow-hidden rounded-3xl p-8 text-center bg-gradient-to-br from-red-50 to-rose-50 border border-red-100 hover:shadow-xl hover:shadow-red-100/50 hover:-translate-y-2 transition-all duration-500"
+                    data-animation="fade-up" style="animation-delay: 0.3s;">
+                    <div
+                        class="absolute inset-0 bg-gradient-to-br from-red-500 to-rose-600 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                    </div>
+                    <div class="relative z-10">
+                        <div
+                            class="w-16 h-16 mx-auto bg-gradient-to-br from-red-500 to-rose-600 rounded-2xl flex items-center justify-center mb-4 shadow-lg shadow-red-200/60 group-hover:bg-white/20 group-hover:shadow-none transition-all duration-300 group-hover:scale-110">
+                            <svg class="w-8 h-8 text-white" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.5 12 3.5 12 3.5s-7.505 0-9.377.55a3.016 3.016 0 0 0-2.122 2.136C0 8.07 0 12 0 12s0 3.93.501 5.814a3.016 3.016 0 0 0 2.122 2.136c1.872.55 9.377.55 9.377.55s7.505 0 9.377-.55a3.016 3.016 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+                            </svg>
+                        </div>
+                        <h4 class="font-bold text-gray-900 group-hover:text-white transition-colors duration-300">
+                            YouTube</h4>
+                        <p class="text-sm text-gray-500 group-hover:text-white/80 transition-colors duration-300 mt-1">
+                            Harmoni Budaya Kaili</p>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Hashtag -->
+            <div class="text-center mt-12 scroll-animate" data-animation="fade-up">
+                <p class="text-gray-400 text-sm mb-4" data-t="hashtag_label">Gunakan hashtag kami di sosial media</p>
+                <div class="flex flex-wrap justify-center gap-3">
+                    <span
+                        class="px-5 py-2.5 bg-forest-50 text-moss font-bold rounded-full border border-forest-100 hover:bg-forest-100 transition-colors cursor-pointer">#HarmoniBudayaKaili</span>
+                    <span
+                        class="px-5 py-2.5 bg-emerald-50 text-emerald-700 font-bold rounded-full border border-emerald-100 hover:bg-emerald-100 transition-colors cursor-pointer">#MerayakanBudaya</span>
+                    <span
+                        class="px-5 py-2.5 bg-green-50 text-green-700 font-bold rounded-full border border-green-100 hover:bg-green-100 transition-colors cursor-pointer">#MenjagaLingkungan</span>
+                    <span
+                        class="px-5 py-2.5 bg-teal-50 text-teal-700 font-bold rounded-full border border-teal-100 hover:bg-teal-100 transition-colors cursor-pointer">#HariLingkunganHidup</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- =========================================
+         FOOTER
+    ========================================= -->
+    <footer class="relative bg-forest-950 pt-16 pb-8 overflow-hidden">
+        <div class="absolute inset-0">
+            <div class="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-leaf via-emerald-400 to-moss"></div>
+        </div>
+
+        <div class="relative max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="grid md:grid-cols-3 gap-12 mb-12">
+                <!-- Branding -->
+                <div>
+                    <div class="flex items-center gap-2 sm:gap-3 mb-6">
+                        <img src="assets/images/logo-harmoni.png" alt="Logo Harmoni Budaya Kaili" class="h-10 sm:h-12 w-auto object-contain">
+                        <div class="w-px h-8 sm:h-10 bg-white/10"></div>
+                        <img src="assets/images/logo-yayasan.png" alt="Logo Yayasan Bulava Nusantara Permai" class="h-10 sm:h-12 w-auto object-contain">
+                    </div>
+                    <p class="text-gray-400 text-sm leading-relaxed" data-t="footer_desc">Merayakan keindahan budaya
+                        Kaili yang hidup berdampingan selaras dengan alam, dalam semangat melestarikan lingkungan hidup.
+                    </p>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h4 class="text-white font-bold mb-6" data-t="footer_nav">Navigasi</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#beranda"
+                                class="text-gray-400 text-sm hover:text-leaf transition-colors flex items-center gap-2"><i
+                                    data-lucide="chevron-right" class="w-4 h-4"></i> Beranda</a></li>
+                        <li><a href="#tentang"
+                                class="text-gray-400 text-sm hover:text-leaf transition-colors flex items-center gap-2"><i
+                                    data-lucide="chevron-right" class="w-4 h-4"></i> Tentang Event</a></li>
+                        <li><a href="#yayasan"
+                                class="text-gray-400 text-sm hover:text-leaf transition-colors flex items-center gap-2"><i
+                                    data-lucide="chevron-right" class="w-4 h-4"></i> Yayasan</a></li>
+                        <li><a href="#pendaftaran"
+                                class="text-gray-400 text-sm hover:text-leaf transition-colors flex items-center gap-2"><i
+                                    data-lucide="chevron-right" class="w-4 h-4"></i> Pendaftaran</a></li>
+                        <li><a href="#kemitraan"
+                                class="text-gray-400 text-sm hover:text-leaf transition-colors flex items-center gap-2"><i
+                                    data-lucide="chevron-right" class="w-4 h-4"></i> Kemitraan</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact Info -->
+                <div>
+                    <h4 class="text-white font-bold mb-6" data-t="footer_kontak">Kontak</h4>
+                    <ul class="space-y-3">
+                        <li class="flex items-center gap-3 text-gray-400 text-sm">
+                            <i data-lucide="mail" class="w-5 h-5 text-leaf flex-shrink-0"></i>
+                            <a href="mailto:harmonibudayakaili2026@gmail.com"
+                                class="hover:text-leaf transition-colors">harmonibudayakaili2026@gmail.com</a>
+                        </li>
+                        <li class="flex items-center gap-3 text-gray-400 text-sm">
+                            <i data-lucide="phone" class="w-5 h-5 text-leaf flex-shrink-0"></i>
+                            <span>+62 821-5692-9275</span>
+                        </li>
+                        <li class="flex items-center gap-3 text-gray-400 text-sm">
+                            <i data-lucide="map-pin" class="w-5 h-5 text-leaf flex-shrink-0"></i>
+                            <span>Palu, Sulawesi Tengah</span>
+                        </li>
+                    </ul>
+
+                    <!-- Social Icons -->
+                    <div class="flex gap-3 mt-6">
+                        <a href="https://instagram.com/harmonibudayakaili" target="_blank" rel="noopener"
+                            class="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:bg-leaf hover:text-white hover:border-leaf transition-all duration-300 hover:scale-110">
+                            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+                                <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 7.315c-2.585 0-4.685 2.1-4.685 4.685s2.1 4.685 4.685 4.685 4.685-2.1 4.685-4.685-2.1-4.685-4.685-4.685zm0 7.23a2.545 2.545 0 110-5.09 2.545 2.545 0 010 5.09zm3.225-5.902a1.08 1.08 0 11-2.16 0 1.08 1.08 0 012.16 0z" />
+                            </svg>
+                        </a>
+                        <a href="https://facebook.com/harmonibudayakaili" target="_blank" rel="noopener"
+                            class="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:bg-leaf hover:text-white hover:border-leaf transition-all duration-300 hover:scale-110">
+                            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.469h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.469h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+                            </svg>
+                        </a>
+
+                        <a href="https://youtube.com/@harmonibudayakaili" target="_blank" rel="noopener"
+                            class="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:bg-leaf hover:text-white hover:border-leaf transition-all duration-300 hover:scale-110">
+                            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.5 12 3.5 12 3.5s-7.505 0-9.377.55a3.016 3.016 0 0 0-2.122 2.136C0 8.07 0 12 0 12s0 3.93.501 5.814a3.016 3.016 0 0 0 2.122 2.136c1.872.55 9.377.55 9.377.55s7.505 0 9.377-.55a3.016 3.016 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bottom Bar -->
+            <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="text-gray-500 text-sm" data-t="footer_copy">&copy; 2026 Harmoni Budaya Kaili. All rights
+                    reserved.</p>
+                <p class="text-gray-600 text-xs flex items-center gap-1" data-t="footer_made">Dibuat oleh <a href="https://kalombastudio.indevs.in/" target="_blank" rel="noopener" class="text-gray-400 hover:text-leaf transition-colors">Kalomba Studio</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- =========================================
+         BACK TO TOP BUTTON
+    ========================================= -->
+    <button id="back-to-top"
+        class="fixed bottom-8 right-8 z-50 w-14 h-14 rounded-full bg-gradient-to-br from-leaf to-moss text-white shadow-xl shadow-leaf/30 flex items-center justify-center opacity-0 invisible translate-y-4 transition-all duration-500 hover:shadow-leaf/50 hover:scale-110">
+        <i data-lucide="arrow-up" class="w-6 h-6"></i>
+    </button>
+
+    <!-- =========================================
+         SUCCESS MODAL
+    ========================================= -->
+    <div id="success-modal"
+        class="fixed inset-0 z-[100] flex items-center justify-center p-4 opacity-0 invisible transition-all duration-300">
+        <div class="absolute inset-0 bg-black/50 backdrop-blur-sm" onclick="closeModal()"></div>
+        <div class="relative bg-white rounded-3xl p-10 max-w-md w-full shadow-2xl transform scale-90 transition-transform duration-300"
+            id="modal-content">
+            <div class="text-center">
+                <div
+                    class="w-20 h-20 mx-auto bg-gradient-to-br from-leaf to-moss rounded-full flex items-center justify-center mb-6 shadow-lg shadow-leaf/30">
+                    <i data-lucide="check" class="w-10 h-10 text-white"></i>
+                </div>
+                <h3 class="text-2xl font-heading font-bold text-gray-900 mb-3">Pendaftaran Berhasil!</h3>
+                <p class="text-gray-500 mb-8" id="modal-message">Formulir Anda telah berhasil dikirim. Kami akan
+                    menghubungi Anda melalui email.</p>
+                <button onclick="closeModal()"
+                    class="px-8 py-3 bg-gradient-to-r from-leaf to-moss text-white font-bold rounded-xl hover:shadow-lg transition-all duration-300">
+                    Tutup
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- =========================================
+         SEARCH OVERLAY
+    ========================================= -->
+    <div id="search-overlay" class="fixed inset-0 z-[90] flex items-start justify-center pt-24">
+        <div class="absolute inset-0 bg-black/40 backdrop-blur-sm" onclick="closeSearch()"></div>
+        <div
+            class="search-box relative w-full max-w-2xl mx-4 bg-white rounded-2xl shadow-2xl p-6 border border-gray-100">
+            <div class="flex items-center gap-4">
+                <i data-lucide="search" class="w-6 h-6 text-leaf flex-shrink-0"></i>
+                <input id="search-input" type="text" placeholder="Cari informasi event..."
+                    class="w-full text-lg text-gray-800 placeholder-gray-400 outline-none font-body" autocomplete="off">
+                <button onclick="closeSearch()"
+                    class="p-2 hover:bg-gray-100 rounded-lg transition-colors flex-shrink-0">
+                    <i data-lucide="x" class="w-5 h-5 text-gray-400"></i>
+                </button>
+            </div>
+            <div class="mt-4 pt-4 border-t border-gray-100">
+                <p class="text-xs text-gray-400 mb-2">Pencarian Cepat</p>
+                <div class="flex flex-wrap gap-2">
+                    <a href="#pendaftaran" onclick="closeSearch()"
+                        class="px-3 py-1.5 bg-forest-50 text-moss text-sm rounded-full hover:bg-forest-100 transition-colors">Pendaftaran</a>
+                    <a href="#kemitraan" onclick="closeSearch()"
+                        class="px-3 py-1.5 bg-forest-50 text-moss text-sm rounded-full hover:bg-forest-100 transition-colors">Sponsorship</a>
+                    <a href="#tentang" onclick="closeSearch()"
+                        class="px-3 py-1.5 bg-forest-50 text-moss text-sm rounded-full hover:bg-forest-100 transition-colors">Tentang
+                        Event</a>
+                    <a href="#yayasan" onclick="closeSearch()"
+                        class="px-3 py-1.5 bg-forest-50 text-moss text-sm rounded-full hover:bg-forest-100 transition-colors">Yayasan</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="assets/js/main.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Handle Web3Forms Submission via AJAX
+            document.querySelectorAll('.web3form').forEach(form => {
+                form.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    // TODO: GANTI "YOUR_ACCESS_KEY_HERE" DENGAN ACCESS KEY DARI https://web3forms.com/
+                    const accessKey = '758c320d-73dd-4688-89af-753360c7e00d';
+                    
+                    if (accessKey === 'YOUR_ACCESS_KEY_HERE') {
+                        alert('⚠️ PERHATIAN: Silakan masukkan Access Key Web3Forms Anda di file index.html terlebih dahulu!');
+                        return;
+                    }
+
+                    const formData = new FormData(this);
+                    formData.append("access_key", accessKey);
+                    
+                    // Agar Web3Forms membalas dengan JSON
+                    formData.append("accept", "application/json");
+
+                    const btn = this.querySelector('button[type="submit"]');
+                    const originalText = btn.innerHTML;
+                    btn.innerHTML = '<i data-lucide="loader" class="w-5 h-5 animate-spin"></i> Mengirim...';
+                    lucide.createIcons();
+                    btn.disabled = true;
+
+                    fetch('https://api.web3forms.com/submit', {
+                        method: 'POST',
+                        body: formData
+                    })
+                    .then(async (response) => {
+                        let json = await response.json();
+                        if (response.status == 200) {
+                            // Sukses
+                            const formType = formData.get('form_type');
+                            let msg = 'Formulir Anda telah berhasil dikirim. Kami akan segera menghubungi Anda.';
+                            if (formType === 'pengunjung') {
+                                msg = 'Pendaftaran pengunjung Anda telah berhasil dikirim. Kami akan mengkonfirmasi kehadiran Anda segera!';
+                            } else if (formType === 'penampil') {
+                                msg = 'Pendaftaran penampil Anda telah berhasil dikirim. Tim kami akan menghubungi Anda untuk koordinasi lebih lanjut!';
+                            }
+                            showModal(msg);
+                            form.reset();
+                        } else {
+                            console.log(response);
+                            alert('Maaf, terjadi kesalahan: ' + json.message);
+                        }
+                    })
+                    .catch(error => {
+                        console.log(error);
+                        alert('Maaf, sistem sedang sibuk. Silahkan coba lagi nanti.');
+                    })
+                    .finally(() => {
+                        btn.innerHTML = originalText;
+                        btn.disabled = false;
+                        lucide.createIcons();
+                    });
+                });
+            });
+
+            // Handle old URL params (if any)
+            const urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.has('success')) {
+                const type = urlParams.get('success');
+                let msg = 'Formulir Anda telah berhasil dikirim.';
+                if (type === 'pengunjung') msg = 'Pendaftaran pengunjung berhasil!';
+                if (type === 'penampil') msg = 'Pendaftaran penampil berhasil!';
+                showModal(msg);
+            }
+            if (urlParams.has('error')) {
+                alert('Maaf, terjadi kesalahan. Silakan coba lagi.');
+            }
+        });
+    </script>
+</body>
+
+</html>

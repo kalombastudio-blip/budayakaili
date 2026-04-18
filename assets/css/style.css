@@ -1,0 +1,360 @@
+/* =======================================
+   HARMONI BUDAYA KAILI 2026
+   Custom Stylesheet
+   ======================================= */
+
+/* --- Global Smooth Scroll & Selection --- */
+::selection {
+    background-color: #52B788;
+    color: white;
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f0fdf4;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #52B788, #2D6A4F);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, #2D6A4F, #14532d);
+}
+
+/* --- Language Toggle ID/EN --- */
+.lang-btn {
+    color: rgba(255, 255, 255, 0.6);
+    background: transparent;
+    cursor: pointer;
+    border: none;
+    letter-spacing: 0.5px;
+}
+
+.lang-btn.active-lang {
+    background: #E31E24;
+    color: white;
+    box-shadow: 0 2px 10px rgba(227, 30, 36, 0.4);
+}
+
+.lang-btn:not(.active-lang):hover {
+    color: white;
+}
+
+#navbar.scrolled .lang-btn {
+    color: rgba(55, 65, 81, 0.5);
+}
+
+#navbar.scrolled .lang-btn.active-lang {
+    background: #E31E24;
+    color: white;
+}
+
+#navbar.scrolled .lang-btn:not(.active-lang):hover {
+    color: #1a1a2e;
+}
+
+/* Mobile Language Toggle */
+.lang-btn-mobile {
+    color: rgba(255, 255, 255, 0.6);
+    background: transparent;
+    cursor: pointer;
+    border: none;
+    letter-spacing: 0.5px;
+}
+
+.lang-btn-mobile.active-lang-mobile {
+    background: #E31E24;
+    color: white;
+    box-shadow: 0 2px 8px rgba(227, 30, 36, 0.35);
+}
+
+.lang-btn-mobile:not(.active-lang-mobile):hover {
+    color: white;
+}
+
+#navbar.scrolled .lang-btn-mobile {
+    color: rgba(55, 65, 81, 0.5);
+}
+
+#navbar.scrolled .lang-btn-mobile.active-lang-mobile {
+    background: #E31E24;
+    color: white;
+}
+
+#navbar.scrolled .lang-btn-mobile:not(.active-lang-mobile):hover {
+    color: #1a1a2e;
+}
+
+/* --- Search Overlay --- */
+#search-overlay {
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+#search-overlay.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+#search-overlay.show .search-box {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.search-box {
+    transform: translateY(-20px);
+    opacity: 0;
+    transition: all 0.3s ease 0.1s;
+}
+
+/* --- Navbar Styles --- */
+#navbar {
+    background: transparent;
+}
+
+#navbar.scrolled {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.08);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.nav-text-color {
+    color: white;
+}
+
+.nav-subtext-color {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.nav-link {
+    color: rgba(255, 255, 255, 0.85);
+}
+
+#navbar.scrolled .nav-text-color {
+    color: #1a1a2e;
+}
+
+#navbar.scrolled .nav-subtext-color {
+    color: #6b7280;
+}
+
+#navbar.scrolled .nav-link {
+    color: #374151;
+}
+
+#navbar.scrolled .nav-link:hover {
+    color: #2D6A4F;
+    background: rgba(82, 183, 136, 0.1);
+}
+
+#navbar.scrolled #mobile-menu-btn i {
+    color: #374151 !important;
+}
+
+/* --- Hero Slide Active --- */
+.hero-slide.active {
+    opacity: 1;
+    z-index: 10;
+}
+
+.hero-slide img {
+    animation: slowZoom 12s ease-in-out infinite alternate;
+}
+
+@keyframes slowZoom {
+    0% { transform: scale(1); }
+    100% { transform: scale(1.08); }
+}
+
+/* --- Slider Dots --- */
+.slider-dot.active {
+    width: 32px;
+    background: white;
+    border-radius: 20px;
+}
+
+/* --- Form Tabs --- */
+.form-tab {
+    color: #6b7280;
+    background: transparent;
+}
+
+.form-tab.active-tab {
+    color: white;
+    background: linear-gradient(135deg, #52B788, #2D6A4F);
+    box-shadow: 0 4px 15px rgba(82, 183, 136, 0.3);
+}
+
+/* --- Form Input Focus Animations --- */
+.form-input {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.form-input:focus {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(82, 183, 136, 0.15);
+}
+
+/* --- Scroll Animations --- */
+.scroll-animate {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.scroll-animate.animated {
+    opacity: 1;
+    transform: translateY(0) translateX(0);
+}
+
+.scroll-animate[data-animation="slide-left"] {
+    transform: translateX(60px);
+}
+
+.scroll-animate[data-animation="slide-right"] {
+    transform: translateX(-60px);
+}
+
+.scroll-animate[data-animation="fade-up"] {
+    transform: translateY(40px);
+}
+
+.scroll-animate[data-animation="slide-left"].animated,
+.scroll-animate[data-animation="slide-right"].animated,
+.scroll-animate[data-animation="fade-up"].animated {
+    opacity: 1;
+    transform: translateY(0) translateX(0);
+}
+
+/* --- Leaf Particle Styling --- */
+.leaf-particle {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    opacity: 0;
+    pointer-events: none;
+    animation: leafFallAnimation linear infinite;
+}
+
+@keyframes leafFallAnimation {
+    0% {
+        transform: translateY(-10%) rotate(0deg) translateX(0);
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.6;
+    }
+    90% {
+        opacity: 0.3;
+    }
+    100% {
+        transform: translateY(110vh) rotate(720deg) translateX(100px);
+        opacity: 0;
+    }
+}
+
+/* --- Counter Animation --- */
+.counter {
+    display: inline-block;
+}
+
+/* --- Gradient Text utility --- */
+.gradient-text {
+    background: linear-gradient(135deg, #52B788, #2D6A4F);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* --- Glassmorphism cards (Kemitraan Dark Section) --- */
+.glass-card {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* --- Success Modal --- */
+#success-modal.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+#success-modal.show #modal-content {
+    transform: scale(1);
+}
+
+/* --- Button Ripple Effect --- */
+.ripple {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.4);
+    transform: scale(0);
+    animation: rippleAnimation 0.6s ease-out;
+    pointer-events: none;
+}
+
+@keyframes rippleAnimation {
+    to {
+        transform: scale(4);
+        opacity: 0;
+    }
+}
+
+/* --- Loading Spinner for form --- */
+.btn-loading {
+    position: relative;
+    pointer-events: none;
+    opacity: 0.8;
+}
+
+.btn-loading::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 24px;
+    height: 24px;
+    margin: -12px 0 0 -12px;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-top-color: white;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* --- Responsive --- */
+@media (max-width: 768px) {
+    .hero-slide .max-w-2xl h2 {
+        font-size: 2.5rem;
+        line-height: 1.1;
+    }
+}
+
+@media (max-width: 640px) {
+    .hero-slide .max-w-2xl h2 {
+        font-size: 2rem;
+    }
+    
+    .hero-slide .max-w-2xl p {
+        font-size: 0.95rem;
+    }
+}
+
+/* --- Print Styles --- */
+@media print {
+    #navbar, #back-to-top, #leaf-particles, #success-modal {
+        display: none !important;
+    }
+}
