@@ -215,17 +215,71 @@ document.addEventListener('DOMContentLoaded', function () {
     // 7. FORM SUBMISSIONS
     // ============================
 
-    // Pengunjung & Penampil forms — submit to email via PHP
-    const formPengunjung = document.getElementById('formPengunjung');
-    const formPenampil = document.getElementById('formPenampil');
+    // Pengunjung & Penampil forms — submit via Web3Forms AJAX
+    const web3FormsAccessKey = '675df8a6-9d29-4f93-9aa6-124016edafd2';
 
-    [formPengunjung, formPenampil].forEach(form => {
-        if (!form) return;
-        form.addEventListener('submit', function(e) {
-            const btn = form.querySelector('button[type="submit"]');
-            btn.classList.add('btn-loading');
-            btn.innerHTML = '<span style="visibility: hidden">Mengirim...</span>';
-            // Let the form submit naturally to send_email.php
+    document.querySelectorAll('.web3form').forEach(form => {
+        form.addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            if (!web3FormsAccessKey || web3FormsAccessKey === 'YOUR_ACCESS_KEY_HERE') {
+                alert('⚠️ PERHATIAN: Silakan masukkan Access Key Web3Forms terlebih dahulu!');
+                return;
+            }
+
+            const formData = new FormData(this);
+            formData.append('access_key', web3FormsAccessKey);
+            formData.append('accept', 'application/json');
+
+            const btn = this.querySelector('button[type="submit"]');
+            const originalHTML = btn.innerHTML;
+            const loadingText = currentLang === 'en' ? 'Sending...' : 'Mengirim...';
+
+            btn.innerHTML = `<i data-lucide="loader" class="w-5 h-5 animate-spin"></i> <span>${loadingText}</span>`;
+            if (typeof lucide !== 'undefined') lucide.createIcons();
+            btn.disabled = true;
+
+            fetch('https://api.web3forms.com/submit', {
+                method: 'POST',
+                body: formData
+            })
+                .then(async (response) => {
+                    const json = await response.json();
+                    if (response.status === 200) {
+                        const formType = formData.get('form_type');
+                        let msg = currentLang === 'en'
+                            ? 'Your form has been submitted successfully. We will contact you soon.'
+                            : 'Formulir Anda telah berhasil dikirim. Kami akan segera menghubungi Anda.';
+
+                        if (formType === 'pengunjung') {
+                            msg = currentLang === 'en'
+                                ? 'Your visitor registration has been submitted! We will confirm your attendance soon.'
+                                : 'Pendaftaran pengunjung Anda telah berhasil dikirim. Kami akan mengkonfirmasi kehadiran Anda segera!';
+                        } else if (formType === 'penampil') {
+                            msg = currentLang === 'en'
+                                ? 'Your performer registration has been submitted! Our team will contact you for further coordination.'
+                                : 'Pendaftaran penampil Anda telah berhasil dikirim. Tim kami akan menghubungi Anda untuk koordinasi lebih lanjut!';
+                        }
+
+                        showModal(msg);
+                        form.reset();
+                    } else {
+                        console.error(response);
+                        const errPrefix = currentLang === 'en' ? 'Sorry, an error occurred: ' : 'Maaf, terjadi kesalahan: ';
+                        alert(errPrefix + (json.message || 'Unknown error'));
+                    }
+                })
+                .catch(error => {
+                    console.error(error);
+                    alert(currentLang === 'en'
+                        ? 'Sorry, the system is currently busy. Please try again later.'
+                        : 'Maaf, sistem sedang sibuk. Silakan coba lagi nanti.');
+                })
+                .finally(() => {
+                    btn.innerHTML = originalHTML;
+                    btn.disabled = false;
+                    setLanguage(currentLang);
+                });
         });
     });
 
@@ -408,20 +462,131 @@ function closeModal() {
     modal.classList.remove('show');
 }
 
+// Open Event Rules / Announcement Modal
+function openRulesModal() {
+    const modal = document.getElementById('rules-modal');
+    if (modal) {
+        modal.classList.add('show');
+        document.body.style.overflow = 'hidden';
+        if (typeof lucide !== 'undefined') lucide.createIcons();
+    }
+}
+
+// Close Event Rules / Announcement Modal
+function closeRulesModal() {
+    const modal = document.getElementById('rules-modal');
+    if (modal) {
+        modal.classList.remove('show');
+        document.body.style.overflow = '';
+    }
+}
+
 // ============================
 // SEARCH OVERLAY
 // ============================
+const searchIndex = [
+    {
+        href: '#beranda',
+        icon: 'calendar',
+        title_id: 'Jadwal & Hari Pohon Sedunia (21 - 22 November 2026)',
+        title_en: 'Schedule & World Tree Day (November 21 - 22, 2026)',
+        keywords: 'beranda home jadwal tanggal november 2026 hari pohon sedunia world tree day'
+    },
+    {
+        href: '#tentang',
+        icon: 'info',
+        title_id: 'Tentang Event, Etnik Kaili & Lokasi (Matantimali)',
+        title_en: 'About the Event, Kaili Ethnic Group & Location (Matantimali)',
+        keywords: 'tentang about event kaili ledo tara rai unde daa lokasi matantimali waktu wita tiket gratis free raego lalove workshop kuliner'
+    },
+    {
+        href: '#yayasan',
+        icon: 'building-2',
+        title_id: 'Penyelenggara: Yayasan Bulava Nusantara Permai',
+        title_en: 'Organizer: Bulava Nusantara Permai Foundation',
+        keywords: 'yayasan foundation penyelenggara bulava nusantara permai pendidikan pelestarian'
+    },
+    {
+        href: '#pendaftaran',
+        icon: 'user-plus',
+        title_id: 'Formulir Pendaftaran Pengunjung & Penampil',
+        title_en: 'Visitor & Performer Registration Form',
+        keywords: 'daftar pendaftaran register registration pengunjung visitor penampil performer gratis tiket tarian musik teater puisi fashion'
+    },
+    {
+        href: '#kemitraan',
+        icon: 'handshake',
+        title_id: 'Kemitraan, Sponsorship (Platinum/Gold) & Donasi',
+        title_en: 'Partnership, Sponsorship (Platinum/Gold) & Donation',
+        keywords: 'kemitraan partnership sponsor sponsorship platinum gold donatur donor donasi whatsapp booth vip'
+    },
+    {
+        href: '#sosmed',
+        icon: 'share-2',
+        title_id: 'Media Sosial & Kontak Panitia',
+        title_en: 'Social Media & Organizer Contact',
+        keywords: 'sosmed social media instagram facebook kontak email telepon whatsapp alamat palu'
+    }
+];
+
 function openSearch() {
     const overlay = document.getElementById('search-overlay');
+    const input = document.getElementById('search-input');
     overlay.classList.add('show');
-    setTimeout(() => {
-        document.getElementById('search-input').focus();
-    }, 300);
+    if (input) {
+        input.value = '';
+        renderSearchResults('');
+        setTimeout(() => input.focus(), 300);
+    }
 }
 
 function closeSearch() {
     const overlay = document.getElementById('search-overlay');
     overlay.classList.remove('show');
+}
+
+function renderSearchResults(query) {
+    const resultsContainer = document.getElementById('search-results');
+    if (!resultsContainer) return;
+
+    const q = query.trim().toLowerCase();
+    if (!q) {
+        resultsContainer.classList.add('hidden');
+        resultsContainer.innerHTML = '';
+        return;
+    }
+
+    const matches = searchIndex.filter(item =>
+        item.keywords.includes(q) ||
+        item.title_id.toLowerCase().includes(q) ||
+        item.title_en.toLowerCase().includes(q)
+    );
+
+    resultsContainer.classList.remove('hidden');
+
+    if (matches.length === 0) {
+        const emptyText = currentLang === 'en'
+            ? `No results found for "${query}"`
+            : `Tidak ditemukan hasil untuk "${query}"`;
+        resultsContainer.innerHTML = `<p class="text-sm text-gray-400 py-2 px-3">${emptyText}</p>`;
+        return;
+    }
+
+    resultsContainer.innerHTML = matches.map(item => {
+        const title = currentLang === 'en' ? item.title_en : item.title_id;
+        return `
+            <a href="${item.href}" onclick="closeSearch()" class="flex items-center gap-3 p-3 rounded-xl hover:bg-forest-50 text-gray-700 hover:text-moss transition-colors">
+                <div class="w-8 h-8 rounded-lg bg-forest-50 text-moss flex items-center justify-center flex-shrink-0">
+                    <i data-lucide="${item.icon}" class="w-4 h-4"></i>
+                </div>
+                <span class="text-sm font-semibold">${title}</span>
+            </a>
+        `;
+    }).join('');
+
+    if (typeof lucide !== 'undefined') {
+        lucide.createIcons();
+    }
 }
 
 // ============================
@@ -430,7 +595,7 @@ function closeSearch() {
 const translations = {
     id: {
         // Hero Slide 1
-        hero1_badge: '5 Juni 2026 \u2014 Hari Lingkungan Hidup Sedunia',
+        hero1_badge: '21 November - 22 November 2026 \u2014 Hari Pohon Sedunia',
         hero1_title: 'Harmoni<br><span class="text-transparent bg-clip-text bg-gradient-to-r from-green-300 to-emerald-400">Budaya Kaili</span>',
         hero1_desc: 'Merayakan keindahan budaya Kaili yang hidup berdampingan selaras dengan alam, dalam semangat melestarikan lingkungan hidup.',
         hero1_cta1: 'Daftar Sekarang',
@@ -459,11 +624,15 @@ const translations = {
         // Tentang Section
         tentang_badge: 'Tentang Event',
         tentang_title: 'Harmoni Budaya Kaili <span class="text-leaf">2026</span>',
+        tentang_sub1: 'Masyarakat Kaili',
+        tentang_sub2: 'Budaya & Warisan',
+        tentang_sub3: 'Etnik Kaili',
+        tentang_subetnik_lain: '+6 lainnya',
         tentang_p1: 'Masyarakat Kaili merupakan bagian dari sekian banyak masyarakat yang terdapat di Nusantara yang memiliki adat istiadat tersendiri. Dalam penerapan kehidupan masyarakat Kaili banyak kebiasaan atau adat istiadat yang masih berlaku. Masyarakat lokal yang memiliki budaya dan nilai-nilai kearifan adalah aset yang harus dipertahankan. Masyarakat adat memiliki keaslian kehidupan sebagai orang yang berasal dari suatu kultur atau kelompok menghormati asal usul mereka. Masyarakat adat memiliki karakter yang membatasi diri dan mengidentikan diri mereka sebagai sebuah kelompok kecil yang memiliki otoritas dalam menempati sebuah wilayah tertentu.',
         tentang_p2: 'Budaya merupakan cara hidup yang berkembang dan dimiliki bersama oleh sebuah kelompok orang yang diwariskan dari generasi ke generasi. Budaya terbentuk dari banyak unsur termasuk sistim hidup, adat istiadat, bahasa, perkakas, pakaian, bangunan, dan karya seni. Bahasa alat komunikasi merupakan salah satu warisan budaya bagian yang tak terpisahkan dari manusia yang diwariskan secara genetis.',
         tentang_p3: 'Demikian halnya dengan etnik Kaili adalah salah satu bagian dari suku di Nusantara yang mendiami sebagian besar wilayah Propinsi Sulawesi Tengah, tepatnya berada di wilayah Kota Palu. Etnik Kaili memiliki beberapa rumpun sub etnik yaitu <em class="font-semibold text-moss">Ledo, Tara, Rai, Ado, Ija, Unde, Inde, Taa, Daa, Doi, Rai, Lauje, Tialo, Uma, Moma, Tado, Edo, Baree</em>. Setiap sub etnis memiliki khas dalam seni budaya tradisinya. Ditandai dengan banyaknya kesenian Rakyat dari masing-masing subetnis dan upacara adat tradisinya yang berbeda.',
         tentang_tanggal: 'Tanggal',
-        tentang_tanggal_val: '5 Juni 2026',
+        tentang_tanggal_val: '21 November - 22 November 2026',
         tentang_lokasi: 'Lokasi',
         tentang_waktu: 'Waktu',
         tentang_tiket: 'Tiket',
@@ -503,6 +672,38 @@ const translations = {
         form_penampil_title: 'Pendaftaran Penampil',
         form_penampil_sub: 'Tampilkan bakat Anda di panggung Harmoni Budaya Kaili',
         label_nama: 'Nama Lengkap <span class="text-red-500">*</span>',
+        ph_nama: 'Masukkan nama lengkap',
+        label_nama_grup: 'Nama Lengkap / Nama Grup <span class="text-red-500">*</span>',
+        ph_nama_grup: 'Nama atau nama grup',
+        label_email: 'Email <span class="text-red-500">*</span>',
+        ph_email: 'email@contoh.com',
+        label_wa: 'No. WhatsApp <span class="text-red-500">*</span>',
+        label_kota: 'Asal Kota <span class="text-red-500">*</span>',
+        ph_kota: 'Kota asal Anda',
+        label_jml_peserta: 'Jumlah Peserta',
+        opt_peserta_1: '1 Orang',
+        opt_peserta_2: '2 Orang',
+        opt_peserta_3: '3 Orang',
+        opt_peserta_4: '4 Orang',
+        opt_peserta_5: '5+ Orang (Rombongan)',
+        label_pesan_tambahan: 'Pesan Tambahan',
+        ph_pesan_tambahan: 'Tulis pesan atau pertanyaan (opsional)',
+        label_jenis_pertunjukan: 'Jenis Pertunjukan <span class="text-red-500">*</span>',
+        opt_jenis_pilih: '-- Pilih Jenis --',
+        opt_jenis_tarian: 'Tarian Tradisional',
+        opt_jenis_musik: 'Musik Tradisional',
+        opt_jenis_teater: 'Teater / Drama',
+        opt_jenis_puisi: 'Puisi / Sastra',
+        opt_jenis_fashion: 'Fashion / Busana Adat',
+        opt_jenis_lainnya: 'Lainnya',
+        label_jml_anggota: 'Jumlah Anggota <span class="text-red-500">*</span>',
+        ph_jml_anggota: 'Jumlah anggota',
+        label_durasi: 'Durasi Tampil (menit) <span class="text-red-500">*</span>',
+        ph_durasi: 'Estimasi durasi',
+        label_deskripsi: 'Deskripsi Pertunjukan <span class="text-red-500">*</span>',
+        ph_deskripsi: 'Jelaskan pertunjukan yang akan Anda tampilkan...',
+        label_kebutuhan_teknis: 'Kebutuhan Teknis',
+        ph_kebutuhan_teknis: 'Sound system, lighting, properti, dll (opsional)',
         btn_kirim_pengunjung: 'Kirim Pendaftaran',
         btn_kirim_penampil: 'Kirim Pendaftaran Penampil',
 
@@ -510,6 +711,41 @@ const translations = {
         mitra_badge: 'Kemitraan',
         mitra_title: 'Sponsorship & <span class="text-transparent bg-clip-text bg-gradient-to-r from-leaf to-emerald-400">Donasi</span>',
         mitra_desc: 'Jadilah bagian dari pergerakan pelestarian budaya dan lingkungan. Dukung event ini sebagai sponsor atau donatur.',
+        tier1_title: 'Sponsor Platinum',
+        tier1_desc: 'Logo utama di semua media, booth eksklusif, dan kesempatan branding di panggung utama.',
+        tier1_b1: 'Logo di banner utama',
+        tier1_b2: 'Booth 3x3 meter',
+        tier1_b3: 'Mention di panggung',
+        tier1_b4: '20 tiket VIP',
+        tier2_title: 'Sponsor Gold',
+        tier2_desc: 'Penempatan logo di media promosi dan kesempatan interaksi langsung dengan peserta.',
+        tier2_b1: 'Logo di backdrop',
+        tier2_b2: 'Booth 2x2 meter',
+        tier2_b3: '10 tiket VIP',
+        tier2_b4: 'Social media post',
+        tier3_title: 'Donatur',
+        tier3_desc: 'Setiap kontribusi berarti. Dukung pelestarian budaya dan lingkungan sesuai kemampuan Anda.',
+        tier3_b1: 'Sertifikat apresiasi',
+        tier3_b2: 'Nama di wall of fame',
+        tier3_b3: 'Tiket event',
+        tier3_b4: 'Laporan kegiatan',
+        btn_wa_sponsor: 'Hubungi via WhatsApp',
+        btn_wa_donasi: 'Kirim Donasi via WhatsApp',
+        form_mitra_title: 'Ajukan Kemitraan',
+        form_mitra_sub: 'Isi form berikut dan kami akan menghubungi Anda via WhatsApp',
+        label_nama_mitra: 'Nama / Perusahaan <span class="text-red-400">*</span>',
+        ph_nama_mitra: 'Nama Anda / Perusahaan',
+        label_wa_mitra: 'No. WhatsApp <span class="text-red-400">*</span>',
+        label_jenis_mitra: 'Jenis Kemitraan <span class="text-red-400">*</span>',
+        opt_mitra_pilih: '-- Pilih Jenis Kemitraan --',
+        opt_mitra_platinum: 'Sponsor Platinum',
+        opt_mitra_gold: 'Sponsor Gold',
+        opt_mitra_donatur: 'Donatur',
+        opt_mitra_media: 'Media Partner',
+        opt_mitra_lainnya: 'Lainnya',
+        label_pesan_mitra: 'Pesan',
+        ph_pesan_mitra: 'Tulis pesan atau pertanyaan Anda...',
+        btn_kirim_mitra: 'Kirim via WhatsApp',
 
         // Social Media Section
         sosmed_badge: 'Ikuti Kami',
@@ -526,14 +762,30 @@ const translations = {
         footer_nav: 'Navigasi',
         footer_kontak: 'Kontak',
         footer_copy: '&copy; 2026 Harmoni Budaya Kaili. All rights reserved.',
-        footer_made: 'Dibuat oleh <a href="https://kalombastudio.indevs.in/" target="_blank" rel="noopener" class="text-gray-400 hover:text-leaf transition-colors">Kalomba Studio</a>',
+        footer_made: 'Dibuat oleh <a href="https://devupstudio.my.id/" target="_blank" rel="noopener" class="text-gray-400 hover:text-leaf transition-colors">DevUp Studio</a>',
 
         // Modal
         modal_title: 'Pendaftaran Berhasil!',
+        modal_close: 'Tutup',
+
+        // Rules Announcement Modal
+        rules_badge: 'Pemberitahuan & Tata Tertib Event',
+        rules_title: 'Mari Jaga Kelestarian & <span class="text-moss">Keamanan Bersama</span>',
+        rules_subtitle: 'Demi kenyamanan bersama dan kelestarian alam Matantimali dalam semangat <strong>Hari Pohon Sedunia</strong>, seluruh pengunjung & peserta wajib mematuhi aturan berikut:',
+        rule1_title: 'Bebas Plastik Sekali Pakai',
+        rule1_desc: 'Dihimbau tidak membawa kemasan makan & minum sekali pakai berbahan plastik. Gunakan <em>tumbler</em> atau wadah guna ulang.',
+        rule2_title: 'Jaga Kebersihan & Cegah Api',
+        rule2_desc: 'Dilarang keras membuang atau membakar sampah sembarangan di seluruh kawasan area event.',
+        rule3_title: 'Dilarang Bawa Sajam & Senpi',
+        rule3_desc: 'Dilarang membawa senjata tajam (sajam), senjata api (senpi), maupun benda berbahaya lainnya.',
+        rule4_title: 'Bebas Miras & Narkotika',
+        rule4_desc: 'Dilarang keras membawa atau mengonsumsi minuman keras (alkohol) serta narkotika & obat terlarang.',
+        rules_cta: 'Saya Mengerti & Siap Mematuhi',
+        rules_dismiss: 'Lanjutkan Menjelajahi Website',
     },
     en: {
         // Hero Slide 1
-        hero1_badge: 'June 5, 2026 \u2014 World Environment Day',
+        hero1_badge: 'November 21 - 22, 2026 \u2014 World Tree Day',
         hero1_title: 'Harmony of<br><span class="text-transparent bg-clip-text bg-gradient-to-r from-green-300 to-emerald-400">Kaili Culture</span>',
         hero1_desc: 'Celebrating the beauty of Kaili culture living in harmony with nature, in the spirit of environmental preservation.',
         hero1_cta1: 'Register Now',
@@ -562,11 +814,15 @@ const translations = {
         // Tentang Section
         tentang_badge: 'About the Event',
         tentang_title: 'Harmoni Budaya Kaili <span class="text-leaf">2026</span>',
+        tentang_sub1: 'Kaili Community',
+        tentang_sub2: 'Culture & Heritage',
+        tentang_sub3: 'Kaili Ethnic Group',
+        tentang_subetnik_lain: '+6 others',
         tentang_p1: 'The Kaili community is one of the many societies found across the Indonesian archipelago, possessing their own unique customs and traditions. In the daily life of the Kaili people, many customs and traditions are still practiced. The local community, with its culture and values of wisdom, is an asset that must be preserved. Indigenous peoples maintain the authenticity of their way of life as people originating from a particular culture or group, honoring their origins. They possess a character that defines and identifies them as a small group with authority over a specific territory.',
         tentang_p2: 'Culture is a way of life that develops and is shared by a group of people, passed down from generation to generation. Culture is formed from many elements, including living systems, customs, language, tools, clothing, architecture, and works of art. Language, as a communication tool, is one of the cultural heritage inseparable from humanity, passed down genetically.',
         tentang_p3: 'Likewise, the Kaili ethnic group is one of the many tribes in the archipelago that inhabits most of the Central Sulawesi Province, specifically in the Palu City area. The Kaili have several sub-ethnic branches, namely: <em class="font-semibold text-moss">Ledo, Tara, Rai, Ado, Ija, Unde, Inde, Taa, Daa, Doi, Rai, Lauje, Tialo, Uma, Moma, Tado, Edo, Baree</em>. Each sub-ethnic group has its own distinctive characteristics in traditional cultural arts, marked by the abundance of folk arts and different traditional ceremonial rituals from each sub-ethnic group.',
         tentang_tanggal: 'Date',
-        tentang_tanggal_val: 'June 5, 2026',
+        tentang_tanggal_val: 'November 21 - 22, 2026',
         tentang_lokasi: 'Location',
         tentang_waktu: 'Time',
         tentang_tiket: 'Ticket',
@@ -606,6 +862,38 @@ const translations = {
         form_penampil_title: 'Performer Registration',
         form_penampil_sub: 'Showcase your talent on the Harmoni Budaya Kaili stage',
         label_nama: 'Full Name <span class="text-red-500">*</span>',
+        ph_nama: 'Enter your full name',
+        label_nama_grup: 'Full Name / Group Name <span class="text-red-500">*</span>',
+        ph_nama_grup: 'Your name or group name',
+        label_email: 'Email <span class="text-red-500">*</span>',
+        ph_email: 'email@example.com',
+        label_wa: 'WhatsApp Number <span class="text-red-500">*</span>',
+        label_kota: 'City of Origin <span class="text-red-500">*</span>',
+        ph_kota: 'Your city of origin',
+        label_jml_peserta: 'Number of Attendees',
+        opt_peserta_1: '1 Person',
+        opt_peserta_2: '2 People',
+        opt_peserta_3: '3 People',
+        opt_peserta_4: '4 People',
+        opt_peserta_5: '5+ People (Group)',
+        label_pesan_tambahan: 'Additional Message',
+        ph_pesan_tambahan: 'Write a message or question (optional)',
+        label_jenis_pertunjukan: 'Performance Type <span class="text-red-500">*</span>',
+        opt_jenis_pilih: '-- Select Type --',
+        opt_jenis_tarian: 'Traditional Dance',
+        opt_jenis_musik: 'Traditional Music',
+        opt_jenis_teater: 'Theater / Drama',
+        opt_jenis_puisi: 'Poetry / Literature',
+        opt_jenis_fashion: 'Traditional Fashion',
+        opt_jenis_lainnya: 'Other',
+        label_jml_anggota: 'Number of Members <span class="text-red-500">*</span>',
+        ph_jml_anggota: 'Number of members',
+        label_durasi: 'Performance Duration (minutes) <span class="text-red-500">*</span>',
+        ph_durasi: 'Estimated duration',
+        label_deskripsi: 'Performance Description <span class="text-red-500">*</span>',
+        ph_deskripsi: 'Describe the performance you will showcase...',
+        label_kebutuhan_teknis: 'Technical Requirements',
+        ph_kebutuhan_teknis: 'Sound system, lighting, props, etc. (optional)',
         btn_kirim_pengunjung: 'Submit Registration',
         btn_kirim_penampil: 'Submit Performer Registration',
 
@@ -613,6 +901,41 @@ const translations = {
         mitra_badge: 'Partnership',
         mitra_title: 'Sponsorship & <span class="text-transparent bg-clip-text bg-gradient-to-r from-leaf to-emerald-400">Donation</span>',
         mitra_desc: 'Be part of the movement to preserve culture and the environment. Support this event as a sponsor or donor.',
+        tier1_title: 'Platinum Sponsor',
+        tier1_desc: 'Main logo across all media, exclusive booth, and main stage branding opportunity.',
+        tier1_b1: 'Logo on main banner',
+        tier1_b2: '3x3m exclusive booth',
+        tier1_b3: 'Main stage mention',
+        tier1_b4: '20 VIP tickets',
+        tier2_title: 'Gold Sponsor',
+        tier2_desc: 'Logo placement on promotional media and direct engagement with attendees.',
+        tier2_b1: 'Logo on stage backdrop',
+        tier2_b2: '2x2m booth',
+        tier2_b3: '10 VIP tickets',
+        tier2_b4: 'Dedicated social media post',
+        tier3_title: 'Donor',
+        tier3_desc: 'Every contribution matters. Support cultural and environmental preservation according to your capacity.',
+        tier3_b1: 'Certificate of appreciation',
+        tier3_b2: 'Name on the Wall of Fame',
+        tier3_b3: 'Event admission ticket',
+        tier3_b4: 'Post-event activity report',
+        btn_wa_sponsor: 'Contact via WhatsApp',
+        btn_wa_donasi: 'Send Donation via WhatsApp',
+        form_mitra_title: 'Submit Partnership Inquiry',
+        form_mitra_sub: 'Fill out the form below and we will connect with you via WhatsApp',
+        label_nama_mitra: 'Name / Company <span class="text-red-400">*</span>',
+        ph_nama_mitra: 'Your Name / Company',
+        label_wa_mitra: 'WhatsApp Number <span class="text-red-400">*</span>',
+        label_jenis_mitra: 'Partnership Type <span class="text-red-400">*</span>',
+        opt_mitra_pilih: '-- Select Partnership Type --',
+        opt_mitra_platinum: 'Platinum Sponsor',
+        opt_mitra_gold: 'Gold Sponsor',
+        opt_mitra_donatur: 'Donor',
+        opt_mitra_media: 'Media Partner',
+        opt_mitra_lainnya: 'Other',
+        label_pesan_mitra: 'Message',
+        ph_pesan_mitra: 'Write your message or inquiry...',
+        btn_kirim_mitra: 'Send via WhatsApp',
 
         // Social Media Section
         sosmed_badge: 'Follow Us',
@@ -629,10 +952,26 @@ const translations = {
         footer_nav: 'Navigation',
         footer_kontak: 'Contact',
         footer_copy: '&copy; 2026 Harmoni Budaya Kaili. All rights reserved.',
-        footer_made: 'Made by <a href="https://kalombastudio.indevs.in/" target="_blank" rel="noopener" class="text-gray-400 hover:text-leaf transition-colors">Kalomba Studio</a>',
+        footer_made: 'Made by <a href="https://devupstudio.my.id/" target="_blank" rel="noopener" class="text-gray-400 hover:text-leaf transition-colors">DevUp Studio</a>',
 
         // Modal
         modal_title: 'Registration Successful!',
+        modal_close: 'Close',
+
+        // Rules Announcement Modal
+        rules_badge: 'Event Notice & Code of Conduct',
+        rules_title: 'Let\u2019s Protect Nature & <span class="text-moss">Keep Everyone Safe</span>',
+        rules_subtitle: 'For everyone\u2019s safety and to preserve the nature of Matantimali in the spirit of <strong>World Tree Day</strong>, all visitors & participants must follow these rules:',
+        rule1_title: 'No Single-Use Plastics',
+        rule1_desc: 'Please avoid bringing single-use plastic food & drink packaging. Bring your own reusable tumbler or container.',
+        rule2_title: 'No Littering or Burning Waste',
+        rule2_desc: 'Strictly prohibited from littering or burning trash anywhere within the event area.',
+        rule3_title: 'No Sharp Weapons or Firearms',
+        rule3_desc: 'Strictly prohibited from bringing sharp weapons, firearms, or any other dangerous items.',
+        rule4_title: 'No Alcohol or Narcotics',
+        rule4_desc: 'Strictly prohibited from bringing or consuming alcoholic beverages, narcotics, and illegal drugs.',
+        rules_cta: 'I Understand & Agree to Comply',
+        rules_dismiss: 'Continue Exploring Website',
     }
 };
 
@@ -691,17 +1030,33 @@ document.addEventListener('DOMContentLoaded', function() {
         btn.addEventListener('click', () => setLanguage(btn.dataset.lang));
     });
 
-    // Search button
+    // Search button & live search input
     const searchBtn = document.getElementById('search-btn');
     if (searchBtn) {
         searchBtn.addEventListener('click', openSearch);
     }
 
-    // Close search on Escape
+    const searchInput = document.getElementById('search-input');
+    if (searchInput) {
+        searchInput.addEventListener('input', (e) => {
+            renderSearchResults(e.target.value);
+        });
+        searchInput.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') {
+                const firstLink = document.querySelector('#search-results a');
+                if (firstLink) {
+                    firstLink.click();
+                }
+            }
+        });
+    }
+
+    // Close search & modals on Escape
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape') {
             closeSearch();
             closeModal();
+            closeRulesModal();
         }
     });
 
@@ -709,4 +1064,9 @@ document.addEventListener('DOMContentLoaded', function() {
     if (currentLang !== 'id') {
         setLanguage(currentLang);
     }
+
+    // Automatically show Event Rules Announcement Pop-up shortly after page load
+    setTimeout(() => {
+        openRulesModal();
+    }, 600);
 });

@@ -282,15 +282,28 @@
     border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-/* --- Success Modal --- */
-#success-modal.show {
+/* --- Success Modal & Rules Announcement Modal --- */
+#success-modal.show,
+#rules-modal.show {
     opacity: 1;
     visibility: visible;
 }
 
-#success-modal.show #modal-content {
-    transform: scale(1);
+#success-modal.show #modal-content,
+#rules-modal.show #rules-modal-content {
+    transform: scale(1) translateY(0);
 }
+
+.no-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+
+.no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+/* --- Print Styles --- */
 
 /* --- Button Ripple Effect --- */
 .ripple {
@@ -354,7 +367,7 @@
 
 /* --- Print Styles --- */
 @media print {
-    #navbar, #back-to-top, #leaf-particles, #success-modal {
+    #navbar, #back-to-top, #leaf-particles, #success-modal, #rules-modal {
         display: none !important;
     }
 }
