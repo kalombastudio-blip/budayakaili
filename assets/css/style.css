@@ -160,13 +160,28 @@
 }
 
 /* --- Hero Slide Active --- */
+.hero-slide {
+    will-change: opacity;
+}
+
 .hero-slide.active {
     opacity: 1;
     z-index: 10;
 }
 
-.hero-slide img {
+.hero-slide.active img {
     animation: slowZoom 12s ease-in-out infinite alternate;
+    will-change: transform;
+}
+
+/* --- Offscreen Rendering Optimization --- */
+#yayasan,
+#pendaftaran,
+#kemitraan,
+#sosmed,
+footer {
+    content-visibility: auto;
+    contain-intrinsic-size: auto 700px;
 }
 
 @keyframes slowZoom {
@@ -241,6 +256,8 @@
     height: 20px;
     opacity: 0;
     pointer-events: none;
+    will-change: transform, opacity;
+    contain: layout style paint;
     animation: leafFallAnimation linear infinite;
 }
 

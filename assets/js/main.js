@@ -81,20 +81,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
     // ============================
-    // 2. NAVBAR SCROLL EFFECT
+    // 2. NAVBAR SCROLL EFFECT (Handled in unified rAF scroll listener below)
     // ============================
     const navbar = document.getElementById('navbar');
-    
-    function handleNavbarScroll() {
-        if (window.scrollY > 80) {
-            navbar.classList.add('scrolled');
-        } else {
-            navbar.classList.remove('scrolled');
-        }
-    }
-
-    window.addEventListener('scroll', handleNavbarScroll);
-    handleNavbarScroll();
 
 
     // ============================
@@ -327,35 +316,29 @@ document.addEventListener('DOMContentLoaded', function () {
     // ============================
     const backToTop = document.getElementById('back-to-top');
 
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 500) {
-            backToTop.classList.remove('opacity-0', 'invisible', 'translate-y-4');
-            backToTop.classList.add('opacity-100', 'visible', 'translate-y-0');
-        } else {
-            backToTop.classList.add('opacity-0', 'invisible', 'translate-y-4');
-            backToTop.classList.remove('opacity-100', 'visible', 'translate-y-0');
-        }
-    });
-
     backToTop.addEventListener('click', () => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 
 
     // ============================
-    // 9. LEAF PARTICLES
+    // 9. LEAF PARTICLES (GPU & Background-Tab Optimized)
     // ============================
     const particleContainer = document.getElementById('leaf-particles');
     const leafColors = ['#52B788', '#2D6A4F', '#86efac', '#22c55e', '#15803d'];
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     function createLeaf() {
+        if (document.hidden || prefersReducedMotion || !particleContainer) return;
+        if (particleContainer.childElementCount >= 6) return;
+
         const leaf = document.createElement('div');
         leaf.classList.add('leaf-particle');
         
-        const size = Math.random() * 16 + 10;
+        const size = Math.random() * 14 + 10;
         const left = Math.random() * 100;
-        const duration = Math.random() * 10 + 12;
-        const delay = Math.random() * 10;
+        const duration = Math.random() * 10 + 14;
+        const delay = Math.random() * 4;
         const color = leafColors[Math.floor(Math.random() * leafColors.length)];
 
         leaf.style.width = `${size}px`;
@@ -365,7 +348,7 @@ document.addEventListener('DOMContentLoaded', function () {
         leaf.style.animationDelay = `${delay}s`;
         
         // SVG leaf shape
-        leaf.innerHTML = `<svg viewBox="0 0 24 24" fill="${color}" opacity="0.5">
+        leaf.innerHTML = `<svg viewBox="0 0 24 24" fill="${color}" opacity="0.45">
             <path d="M17 8C8 10 5.9 16.17 3.82 21.34l1.89.66.95-2.3c.48.17.98.3 1.34.3C19 20 22 3 22 3c-1 2-8 2.25-13 3.25S2 11.5 2 13.5s1.75 3.75 1.75 3.75C7 8 17 8 17 8z"/>
         </svg>`;
 
@@ -377,13 +360,12 @@ document.addEventListener('DOMContentLoaded', function () {
         }, (duration + delay) * 1000);
     }
 
-    // Create initial leaves
-    for (let i = 0; i < 8; i++) {
-        setTimeout(() => createLeaf(), i * 2000);
+    if (!prefersReducedMotion) {
+        for (let i = 0; i < 4; i++) {
+            setTimeout(() => createLeaf(), i * 2500);
+        }
+        setInterval(createLeaf, 5000);
     }
-
-    // Continue creating leaves
-    setInterval(createLeaf, 4000);
 
 
     // ============================
@@ -403,16 +385,36 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
     // ============================
-    // 11. ACTIVE NAV LINK HIGHLIGHT
+    // 11. UNIFIED PASSIVE + rAF SCROLL HANDLER
     // ============================
     const sections = document.querySelectorAll('section[id]');
     const navLinks = document.querySelectorAll('.nav-link');
+    let scrollTicking = false;
 
-    window.addEventListener('scroll', () => {
+    function onScrollUpdate() {
+        const scrollY = window.scrollY;
+
+        // 1. Navbar scrolled state
+        if (scrollY > 80) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
+        }
+
+        // 2. Back to top button visibility
+        if (scrollY > 500) {
+            backToTop.classList.remove('opacity-0', 'invisible', 'translate-y-4');
+            backToTop.classList.add('opacity-100', 'visible', 'translate-y-0');
+        } else {
+            backToTop.classList.add('opacity-0', 'invisible', 'translate-y-4');
+            backToTop.classList.remove('opacity-100', 'visible', 'translate-y-0');
+        }
+
+        // 3. Active nav link highlight
         let current = '';
         sections.forEach(section => {
             const top = section.offsetTop - 120;
-            if (window.scrollY >= top) {
+            if (scrollY >= top) {
                 current = section.getAttribute('id');
             }
         });
@@ -423,7 +425,18 @@ document.addEventListener('DOMContentLoaded', function () {
                 link.classList.add('!text-moss', '!bg-leaf/10');
             }
         });
-    });
+
+        scrollTicking = false;
+    }
+
+    window.addEventListener('scroll', () => {
+        if (!scrollTicking) {
+            window.requestAnimationFrame(onScrollUpdate);
+            scrollTicking = true;
+        }
+    }, { passive: true });
+
+    onScrollUpdate();
 });
 
 
